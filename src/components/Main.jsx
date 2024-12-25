@@ -18,7 +18,7 @@ const Main = () => {
 
   return (
     <div className="w-full absolute top-0 bg-gradient-to-b from-[rgba(0,0,0,0.6)] via-[rgb(255,65,65)] to-[rgb(0,0,0)]">
-      <div className="flex flex-col p-20 items-center justify-between md:p-10 md:max-w-[90%] md:m-auto md:flex-row-reverse md:justify-center md:space-x-10 md:space-y-0 space-y-8 my-10">
+      <div className="flex flex-col px-12 mt-20 items-center justify-between md:p-10 md:max-w-[90%] md:m-auto md:flex-row-reverse md:justify-center md:space-x-10 md:space-y-0 space-y-8 ">
         <div className="relative">
           <div className="w-[250px] h-[250px] animate-pulse shadow-[0_0_25px_10px_rgb(255,255,255)] bg-white bg-opacity-80 rounded-full"></div>
           <div className="absolute top-0">
@@ -29,7 +29,7 @@ const Main = () => {
           className="text-white text-2xl md:text-3xl lg:text-4xl font-black h-full leading-[50px] md:leading-[55px] lg:leading-[60px] text-center md:text-justify"
           options={{
             strings: [
-              '<span class="text-4xl md:text-5xl lg:text-6xl font-extrabold">کلوت مولتی مدیا</span>',
+              '<span class="text-2xl md:text-5xl lg:text-6xl font-extrabold">کلوت مولتی مدیا</span>',
               '<span class="text-xl md:text-2xl lg:text-3xl font-medium">جایی که هنر و فناوری دست به دست هم می دهند تا تصویر شما خلق شود</span>',
             ],
             speed: 40,
@@ -38,8 +38,10 @@ const Main = () => {
           }}
         />
       </div>
+        <div className="w-full h-[450px] relative">
+        <Kelaket />
+        </div>
       <div className=" flex flex-col items-center justify-center">
-        {/* <Kelaket /> */}
         <div className="relative w-full">
           <hr className="absolute top-1/2 left-0 w-full shadow-lg border-t-4 border-[#FF7373] bg-[#FF7373] transform -translate-y-1/2 z-0" />
           <div className="relative w-[55%] sm:w-[30%] md:w-[25%] lg:w-[20%] text-center z-10 bg-[#FF7373] rounded-2xl py-2 px-4 shadow-lg m-auto">

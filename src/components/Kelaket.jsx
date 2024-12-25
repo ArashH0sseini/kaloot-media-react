@@ -1,49 +1,72 @@
-import React, { useRef, useEffect } from 'react';
-import * as THREE from 'three';
+import React, { useRef, useEffect, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF } from '@react-three/drei';
 import { AnimationMixer } from 'three';
 
-const ModelWithAnimation = ({ url }) => {
+const ModelWithAnimation = ({ url, playAnimation }) => {
   const { scene, animations } = useGLTF(url);
   const mixer = useRef(null);
+  const actions = useRef([]);
 
-  // استفاده از useFrame برای آپدیت انیمیشن‌ها در هر فریم
+  // استفاده از useFrame برای بروزرسانی انیمیشن‌ها
   useFrame((state, delta) => {
     if (mixer.current) {
-      mixer.current.update(delta); // بروزرسانی انیمیشن‌ها
+      mixer.current.update(delta);
     }
   });
 
-  // برای اجرای انیمیشن‌ها
+  // مقداردهی اولیه انیمیشن‌ها
   useEffect(() => {
     if (animations && animations.length > 0) {
       mixer.current = new AnimationMixer(scene);
-      animations.forEach((clip) => {
-        const action = mixer.current.clipAction(clip);
-        action.play(); // اجرای انیمیشن
-        action.setLoop(THREE.LoopRepeat, Infinity); // انیمیشن‌ها تکرار شوند
-      });
+      actions.current = animations.map((clip) => mixer.current.clipAction(clip));
     }
   }, [animations, scene]);
 
-  return <primitive object={scene} scale={[2, 2, 2]} />;
+  // کنترل پخش یا توقف انیمیشن
+  useEffect(() => {
+    if (playAnimation && actions.current.length > 0) {
+      actions.current.forEach((action) => action.play());
+    } else if (actions.current.length > 0) {
+      actions.current.forEach((action) => action.stop());
+    }
+  }, [playAnimation]);
 
+  return <primitive object={scene} scale={[3, 3, 3]} position={[0, -3, 0]} />;
 };
 
 const Kelaket = () => {
+  const [playAnimation, setPlayAnimation] = useState(false);
+
+  const toggleAnimation = () => {
+    setPlayAnimation((prev) => !prev);
+  };
+
   return (
-    <Canvas>
-      <ambientLight intensity={1} /> {/* نور محیطی برای روشن کردن کل صحنه */}
-      <directionalLight position={[5, 10, 5]} intensity={1} /> {/* نور مستقیم */}
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      
-      {/* کنترل‌های دوربین */}
-      <OrbitControls enableZoom={false} /> {/* غیرفعال کردن زوم صفحه */}
-      
-      {/* بارگذاری مدل انیمیشنی Robot */}
-      <ModelWithAnimation url="/kelaket.gltf" />
-    </Canvas>
+    <>
+      <Canvas camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }} >
+        {/* نور محیطی */}
+        <ambientLight intensity={0.5} />
+        {/* نور مستقیم */}
+        <directionalLight position={[5, 5, 5]} intensity={15} />
+        <directionalLight position={[-5, 5, -5]} intensity={15} />
+        {/* نور از طرفین */}
+        <pointLight position={[10, 0, 0]} intensity={0.5} />
+        <pointLight position={[-10, 0, 0]} intensity={0.5} />
+        {/* نور از بالا */}
+        <spotLight position={[0, 10, 0]} angle={0.3} penumbra={1} intensity={1} />
+        {/* کنترل‌های دوربین */}
+        <OrbitControls enableZoom={false} />
+        {/* بارگذاری مدل انیمیشنی */}
+        <ModelWithAnimation url="/kelaket.gltf" playAnimation={playAnimation} />
+      </Canvas>
+      {/* دکمه برای کنترل انیمیشن */}
+      <div style={{ position: 'absolute', top: 20, left: 20 }}>
+        <button onClick={toggleAnimation} style={{ padding: '10px 20px', fontSize: '16px' }}>
+          {playAnimation ? 'توقف انیمیشن' : 'اجرای انیمیشن'}
+        </button>
+      </div>
+    </>
   );
 };
 
