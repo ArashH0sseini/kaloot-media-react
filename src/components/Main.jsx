@@ -26,7 +26,7 @@ const Main = () => {
           </div>
         </div>
         <TypeIt
-          className="text-white text-2xl md:text-3xl lg:text-4xl font-black h-full leading-[50px] md:leading-[55px] lg:leading-[60px] text-center md:text-justify"
+          className="text-white text-2xl md:text-3xl lg:text-4xl font-black h-40 leading-[50px] md:leading-[55px] lg:leading-[60px] text-center md:text-justify"
           options={{
             strings: [
               '<span class="text-2xl md:text-5xl lg:text-6xl font-extrabold">کلوت مولتی مدیا</span>',
