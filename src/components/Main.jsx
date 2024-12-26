@@ -8,6 +8,7 @@ import motion from "../assets/images/motion.png";
 import Card from "./Card";
 import Kelaket from "./Kelaket";
 import FlashingArrows from "./FlashingArrows";
+import Footer from "./Footer";
 
 const Main = () => {
   const images = [
@@ -70,6 +71,8 @@ const Main = () => {
         </div>
         <span className="animate-spin">.</span>
       </div>
+
+<Footer />
     </div>
   );
 };

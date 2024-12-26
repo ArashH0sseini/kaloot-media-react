@@ -49,8 +49,8 @@ const Kelaket = () => {
         {/* نور محیطی */}
         <ambientLight intensity={0.5} />
         {/* نور مستقیم */}
-        <directionalLight position={[5, 5, 5]} intensity={15} />
-        <directionalLight position={[-5, 5, -5]} intensity={15} />
+        <directionalLight position={[5, 5, 5]} intensity={25} />
+        <directionalLight position={[-5, 5, -5]} intensity={25} />
         {/* نور از طرفین */}
         <pointLight position={[10, 0, 0]} intensity={0.5} />
         <pointLight position={[-10, 0, 0]} intensity={0.5} />

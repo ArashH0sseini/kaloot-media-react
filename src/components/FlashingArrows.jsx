@@ -23,7 +23,7 @@ const FlashingArrows = () => {
         } else if (step === 3) {
           // توقف زمانی که هر سه فلش روشن هستند
           setPause(true);
-          setTimeout(() => setPause(false), 1000); // توقف برای 1 ثانیه
+          setTimeout(() => setPause(false), 500); // توقف برای 1 ثانیه
           setStep(step + 1);
         } else if (step > 3 && step < 7) {
           // خاموش شدن فلش‌ها
@@ -32,7 +32,7 @@ const FlashingArrows = () => {
         } else if (step === 7) {
           // توقف زمانی که همه فلش‌ها خاموش شده‌اند
           setPause(true);
-          setTimeout(() => setPause(false), 1000); // توقف برای 1 ثانیه
+          setTimeout(() => setPause(false), 500); // توقف برای 1 ثانیه
           setStep(0); // بازگشت به مرحله اول
         }
 
