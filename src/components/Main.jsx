@@ -72,7 +72,7 @@ const Main = () => {
         <span className="animate-spin">.</span>
       </div>
 
-<Footer />
+      <Footer />
     </div>
   );
 };
