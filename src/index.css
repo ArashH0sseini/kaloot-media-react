@@ -52,3 +52,9 @@ input[type='range']::-webkit-slider-thumb {
 input[type='range']::-webkit-slider-thumb:active {
   transform: scale(1);
 }
+
+
+.clip-triangle {
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+  border-radius: 20%;
+}

@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
-import { AnimationMixer } from 'three';
+import React, { useRef, useEffect, useState } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, useGLTF } from "@react-three/drei";
+import { AnimationMixer } from "three";
 
 const ModelWithAnimation = ({ url, playAnimation }) => {
   const { scene, animations } = useGLTF(url);
@@ -19,7 +19,9 @@ const ModelWithAnimation = ({ url, playAnimation }) => {
   useEffect(() => {
     if (animations && animations.length > 0) {
       mixer.current = new AnimationMixer(scene);
-      actions.current = animations.map((clip) => mixer.current.clipAction(clip));
+      actions.current = animations.map((clip) =>
+        mixer.current.clipAction(clip)
+      );
     }
   }, [animations, scene]);
 
@@ -32,7 +34,7 @@ const ModelWithAnimation = ({ url, playAnimation }) => {
     }
   }, [playAnimation]);
 
-  return <primitive object={scene} scale={[3, 3, 3]} position={[0, -3, 0]} />;
+  return <primitive object={scene} scale={[5, 5, 5]} position={[0, -4, 0]} />;
 };
 
 const Kelaket = () => {
@@ -43,8 +45,7 @@ const Kelaket = () => {
   };
 
   return (
-    <>
-      <Canvas camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }} >
+      <Canvas  camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}>
         {/* نور محیطی */}
         <ambientLight intensity={0.5} />
         {/* نور مستقیم */}
@@ -54,19 +55,24 @@ const Kelaket = () => {
         <pointLight position={[10, 0, 0]} intensity={0.5} />
         <pointLight position={[-10, 0, 0]} intensity={0.5} />
         {/* نور از بالا */}
-        <spotLight position={[0, 10, 0]} angle={0.3} penumbra={1} intensity={1} />
+        <spotLight
+          position={[0, 10, 0]}
+          angle={0.3}
+          penumbra={1}
+          intensity={1}
+        />
         {/* کنترل‌های دوربین */}
         <OrbitControls enableZoom={false} />
         {/* بارگذاری مدل انیمیشنی */}
         <ModelWithAnimation url="/kelaket.gltf" playAnimation={playAnimation} />
-      </Canvas>
-      {/* دکمه برای کنترل انیمیشن */}
-      <div style={{ position: 'absolute', top: 20, left: 20 }}>
-        <button onClick={toggleAnimation} style={{ padding: '10px 20px', fontSize: '16px' }}>
+              {/* دکمه برای کنترل انیمیشن */}
+      {/* <div className="absolute top-5 left-5"> */}
+        {/* <button onClick={toggleAnimation} style={{ padding: '10px 20px', fontSize: '16px' }}>
           {playAnimation ? 'توقف انیمیشن' : 'اجرای انیمیشن'}
-        </button>
-      </div>
-    </>
+        </button> */}
+      {/* </div> */}
+      </Canvas>
+  
   );
 };
 
