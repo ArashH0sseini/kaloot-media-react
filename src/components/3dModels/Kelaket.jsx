@@ -45,6 +45,8 @@ const Kelaket = () => {
   };
 
   return (
+          <div className="w-full h-56">
+    
       <Canvas  camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}>
         {/* نور محیطی */}
         <ambientLight intensity={0.5} />
@@ -72,7 +74,7 @@ const Kelaket = () => {
         </button> */}
       {/* </div> */}
       </Canvas>
-  
+  </div>
   );
 };
 

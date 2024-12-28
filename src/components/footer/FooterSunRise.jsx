@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import sunrise from "../assets/images/sunrise.png";
+import sunrise from "../../assets/images/sunrise.png";
 
 const FooterSunRise = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
