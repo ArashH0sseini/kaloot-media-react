@@ -4,6 +4,7 @@ import Footer from "./footer/Footer";
 import Services from "./services/Services";
 import Header from "./header/Header";
 import { Container, Hamburger } from "./styles";
+import Consultation from "./consultation/consultation";
 
 const Main = () => {
   return (
@@ -12,6 +13,7 @@ const Main = () => {
         <Header />
         <Kelaket />
         <Services />
+        <Consultation />
         <Footer />
       </div>
 

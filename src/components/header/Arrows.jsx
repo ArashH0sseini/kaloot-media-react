@@ -3,11 +3,9 @@ import FlashingArrows from "../header/FlashingArrows";
 
 const Arrows = () => {
   return (
-    <div className="w-full flex items-center justify-center  space-x-reverse mt-10">
-      <div className="rotate-90">
-        <FlashingArrows />
-      </div>
-      <FlashingArrows />
+    <div className="w-full flex items-center justify-between mt-10 px-10">
+      <FlashingArrows rotate="100deg" top={25} left={-25} />
+      <FlashingArrows rotate="140deg" top={25} left={25}/>
     </div>
   );
 };

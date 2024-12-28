@@ -34,7 +34,7 @@ const ModelWithAnimation = ({ url, playAnimation }) => {
     }
   }, [playAnimation]);
 
-  return <primitive object={scene} scale={[5, 5, 5]} position={[0, -4, 0]} />;
+  return <primitive object={scene} scale={[4, 4, 4]} position={[0, -5, 0]} />;
 };
 
 const Kelaket = () => {
@@ -45,36 +45,43 @@ const Kelaket = () => {
   };
 
   return (
-          <div className="w-full h-56">
-    
-      <Canvas  camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}>
-        {/* نور محیطی */}
-        <ambientLight intensity={0.5} />
-        {/* نور مستقیم */}
-        <directionalLight position={[5, 5, 5]} intensity={25} />
-        <directionalLight position={[-5, 5, -5]} intensity={25} />
-        {/* نور از طرفین */}
-        <pointLight position={[10, 0, 0]} intensity={0.5} />
-        <pointLight position={[-10, 0, 0]} intensity={0.5} />
-        {/* نور از بالا */}
-        <spotLight
-          position={[0, 10, 0]}
-          angle={0.3}
-          penumbra={1}
-          intensity={1}
-        />
-        {/* کنترل‌های دوربین */}
-        <OrbitControls enableZoom={false} />
-        {/* بارگذاری مدل انیمیشنی */}
-        <ModelWithAnimation url="/kelaket.gltf" playAnimation={playAnimation} />
-              {/* دکمه برای کنترل انیمیشن */}
-      {/* <div className="absolute top-5 left-5"> */}
-        {/* <button onClick={toggleAnimation} style={{ padding: '10px 20px', fontSize: '16px' }}>
+    <div className="w-full flex items-center justify-center">
+      <div className="rounded-3xl w-[50%] h-72 bg-[#ffca59] shadow-[0_0_20px_10px_rgb(255,202,89)] mt-2 mb-12">
+        <Canvas
+          onClick={toggleAnimation}
+          camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}
+        >
+          {/* نور محیطی */}
+          <ambientLight intensity={0.5} />
+          {/* نور مستقیم */}
+          <directionalLight position={[5, 5, 5]} intensity={25} />
+          <directionalLight position={[-5, 5, -5]} intensity={25} />
+          {/* نور از طرفین */}
+          <pointLight position={[10, 0, 0]} intensity={0.5} />
+          <pointLight position={[-10, 0, 0]} intensity={0.5} />
+          {/* نور از بالا */}
+          <spotLight
+            position={[0, 10, 0]}
+            angle={0.3}
+            penumbra={1}
+            intensity={1}
+          />
+          {/* کنترل‌های دوربین */}
+          <OrbitControls enableZoom={false} />
+          {/* بارگذاری مدل انیمیشنی */}
+          <ModelWithAnimation
+            url="/kelaket.gltf"
+            playAnimation={playAnimation}
+          />
+          {/* دکمه برای کنترل انیمیشن */}
+          {/* <div className="absolute top-5 left-5"> */}
+          {/* <button onClick={toggleAnimation} style={{ padding: '10px 20px', fontSize: '16px' }}>
           {playAnimation ? 'توقف انیمیشن' : 'اجرای انیمیشن'}
         </button> */}
-      {/* </div> */}
-      </Canvas>
-  </div>
+          {/* </div> */}
+        </Canvas>
+      </div>
+    </div>
   );
 };
 
