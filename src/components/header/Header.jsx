@@ -1,6 +1,6 @@
 import React from "react";
 import TypeIt from "typeit-react";
-import kalootLogo from "../assets/images/kaloot-logo.png";
+import kalootLogo from "../../assets/images/kaloot-logo.png";
 import Arrows from "./Arrows";
 
 const Header = () => {

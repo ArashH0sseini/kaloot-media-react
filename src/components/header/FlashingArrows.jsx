@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import triangleSrc from '../assets/images/neon.png'
+import triangleSrc from '../../assets/images/neon.png'
 const FlashingArrows = () => {
   const [activeStates, setActiveStates] = useState([false, false, false]); // حالت روشن/خاموش هر فلش
   const [step, setStep] = useState(0); // مرحله انیمیشن

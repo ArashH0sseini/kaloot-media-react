@@ -1,7 +1,7 @@
 import { lazy, useState } from "react";
 import { FadeIn, LeftMiddle } from "../components/styles";
-const Overlay = lazy(() => import("../components/Overlay"));
-const Rolls = lazy(() => import("./Rolls"));
+const Main = lazy(() => import("../components/Main"));
+const Rolls = lazy(() => import("./3dModels/Rolls"));
 
 const LazyComponent = () => {
   const [speed, set] = useState(1);
@@ -10,7 +10,7 @@ const LazyComponent = () => {
     <>
       <Rolls speed={speed} />
       <FadeIn />
-      <Overlay />
+      <Main />
       <LeftMiddle>
         <input
           type="range"

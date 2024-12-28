@@ -1,5 +1,5 @@
 import React from "react";
-import FlashingArrows from "./header/FlashingArrows";
+import FlashingArrows from "../header/FlashingArrows";
 
 const Arrows = () => {
   return (
