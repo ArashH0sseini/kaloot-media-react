@@ -3,15 +3,20 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { AnimationMixer } from "three";
 
-const ModelWithAnimation = ({ url, playAnimation }) => {
+const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   const { scene, animations } = useGLTF(url);
   const mixer = useRef(null);
   const actions = useRef([]);
+  const modelRef = useRef(); // مرجع برای چرخش مدل
+  const [animationLength, setAnimationLength] = useState(0);
 
-  // استفاده از useFrame برای بروزرسانی انیمیشن‌ها
-  useFrame((state, delta) => {
+  // چرخش مداوم
+  useFrame(() => {
+    if (modelRef.current) {
+      modelRef.current.rotation.y += 0.01; // سرعت چرخش (0.01 را می‌توانید تغییر دهید)
+    }
     if (mixer.current) {
-      mixer.current.update(delta);
+      mixer.current.update(0.01); // آپدیت انیمیشن‌ها
     }
   });
 
@@ -19,38 +24,55 @@ const ModelWithAnimation = ({ url, playAnimation }) => {
   useEffect(() => {
     if (animations && animations.length > 0) {
       mixer.current = new AnimationMixer(scene);
-      actions.current = animations.map((clip) =>
-        mixer.current.clipAction(clip)
-      );
+      actions.current = animations.map((clip) => mixer.current.clipAction(clip));
+      if (animations[0]) {
+        setAnimationLength(animations[0].duration);
+      }
     }
   }, [animations, scene]);
 
   // کنترل پخش یا توقف انیمیشن
   useEffect(() => {
     if (playAnimation && actions.current.length > 0) {
-      actions.current.forEach((action) => action.play());
-    } else if (actions.current.length > 0) {
-      actions.current.forEach((action) => action.stop());
+      actions.current.forEach((action) => action.reset().play());
+      const timer = setTimeout(() => {
+        actions.current.forEach((action) => action.stop());
+        onAnimationEnd();
+      }, animationLength * 1000);
+      return () => clearTimeout(timer);
     }
-  }, [playAnimation]);
+  }, [playAnimation, animationLength, onAnimationEnd]);
 
-  return <primitive object={scene} scale={[4, 4, 4]} position={[0, -5, 0]} />;
+  return (
+    <primitive
+      ref={modelRef} // افزودن مرجع به مدل
+      object={scene}
+      scale={[4, 4, 4]}
+      position={[0, -5, 0]}
+    />
+  );
 };
 
 const Kelaket = () => {
   const [playAnimation, setPlayAnimation] = useState(false);
 
-  const toggleAnimation = () => {
-    setPlayAnimation((prev) => !prev);
+  const handleAnimationEnd = () => {
+    setPlayAnimation(false);
+  };
+
+  const handleClick = () => {
+    if (!playAnimation) {
+      setPlayAnimation(true);
+    }
   };
 
   return (
     <div className="w-full flex items-center justify-center">
-      <div className="rounded-3xl w-[50%] h-72 bg-[#ffca59] shadow-[0_0_20px_10px_rgb(255,202,89)] mt-2 mb-12">
-        <Canvas
-          onClick={toggleAnimation}
-          camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}
-        >
+      <div
+        className="rounded-3xl w-[50%] h-72 animated-background bg-gradient-to-r from-[#ffb71b] via-[#ffae00] to-[#ff8521] shadow-[0_0_20px_5px_rgb(255,174,0)] mt-2 mb-12"
+        onClick={handleClick}
+      >
+        <Canvas camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}>
           {/* نور محیطی */}
           <ambientLight intensity={0.5} />
           {/* نور مستقیم */}
@@ -72,13 +94,8 @@ const Kelaket = () => {
           <ModelWithAnimation
             url="/kelaket.gltf"
             playAnimation={playAnimation}
+            onAnimationEnd={handleAnimationEnd}
           />
-          {/* دکمه برای کنترل انیمیشن */}
-          {/* <div className="absolute top-5 left-5"> */}
-          {/* <button onClick={toggleAnimation} style={{ padding: '10px 20px', fontSize: '16px' }}>
-          {playAnimation ? 'توقف انیمیشن' : 'اجرای انیمیشن'}
-        </button> */}
-          {/* </div> */}
         </Canvas>
       </div>
     </div>
