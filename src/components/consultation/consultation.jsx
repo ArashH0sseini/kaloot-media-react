@@ -6,7 +6,7 @@ import ConsultationButton from "./ConsultationButton";
 const Consultation = () => {
   return (
     <div className="relative flex flex-col items-center justify-center">
-      <Title title="مشاوره اختصاصی" size="24px" circle={false} />
+      <Title title="مشاوره تخصصی" size="24px" circle={false} />
       <div className="w-full my-20 text-white p-4 text-justify space-y-8">
         <h3 className="text-center">
           اگه نیاز به مشاوره تخصصی در زمینه تبلیغات کسب و کارت داشتی میتونی با
@@ -14,7 +14,7 @@ const Consultation = () => {
         </h3>
         <ConsultationButton />
         <h3 className="text-center">
-          یا با پر کردن فرم زیر در اولین فرصت باهات تماس میگیریم{" "}
+          یا با پر کردن فرم زیر در اولین فرصت باهات تماس میگیریم
         </h3>
         <Form />
       </div>

@@ -5,32 +5,28 @@ const FloatingCircles = () => {
     leftCircle: { x: "11.8%", y: "80%" },
     rightCircle: { x: "89%", y: "80%" },
   });
-  const [stopped, setStopped] = useState(false); // وضعیت توقف
-  const limit = 3200; // نقطه توقف حرکت
+  const [stopped, setStopped] = useState(false);
+  const [scrollLimit, setScrollLimit] = useState(3200); // مقدار دینامیک برای limit
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
 
-    // اگر اسکرول کمتر از حد توقف شد، بازنشانی وضعیت
-    if (scrollY < limit && stopped) {
+    if (scrollY < scrollLimit && stopped) {
       setStopped(false);
       return;
     }
 
-    // جلوگیری از به‌روزرسانی موقعیت وقتی توقف فعال است
     if (stopped) return;
 
-    if (scrollY >= limit) {
-      // متوقف کردن حرکت و ثابت کردن موقعیت توپ‌ها
+    if (scrollY >= scrollLimit) {
       setStopped(true);
       setCirclePositions({
-        leftCircle: { x: "7.8%", y: "100%" }, // مقادیر ثابت نهایی
+        leftCircle: { x: "7.8%", y: "100%" },
         rightCircle: { x: "93%", y: "100%" },
       });
       return;
     }
 
-    // حرکت توپ‌ها تا رسیدن به حد مشخص
     const horizontalMovement = Math.min(scrollY / 12, 40);
     const verticalMovement = Math.max(0, (scrollY - 400) / 0.7);
     const curveMovement = Math.sin(verticalMovement / 100) * 50;
@@ -47,10 +43,43 @@ const FloatingCircles = () => {
     });
   };
 
+  const handleResize = () => {
+    const screenWidth = window.innerWidth;
+
+    // تنظیم موقعیت‌ها بر اساس عرض صفحه
+    if (screenWidth < 768) {
+      setScrollLimit(2700); // مقدار کم برای موبایل
+      setCirclePositions({
+        leftCircle: { x: "15%", y: "85%" },
+        rightCircle: { x: "85%", y: "85%" },
+      });
+    } else if (screenWidth < 1024) {
+      setScrollLimit(2600); // مقدار متوسط برای تبلت
+      setCirclePositions({
+        leftCircle: { x: "12%", y: "82%" },
+        rightCircle: { x: "88%", y: "82%" },
+      });
+    } else {
+      setScrollLimit(3200); // مقدار پیش‌فرض برای دسکتاپ
+      setCirclePositions({
+        leftCircle: { x: "11.8%", y: "80%" },
+        rightCircle: { x: "89%", y: "80%" },
+      });
+    }
+  };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [stopped]); // اجرای افکت تنها در صورت تغییر وضعیت توقف
+    window.addEventListener("resize", handleResize);
+
+    // Call resize handler initially to set proper limit
+    handleResize();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [stopped]);
 
   return (
     <>
