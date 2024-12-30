@@ -5,6 +5,7 @@ import Services from "./services/Services";
 import Header from "./header/Header";
 import { Container, Hamburger } from "./styles";
 import Consultation from "./consultation/consultation";
+import FollowInstagram from "./Instagram/FollowInstagram";
 
 const Main = () => {
   return (
@@ -14,6 +15,7 @@ const Main = () => {
         <Kelaket />
         <Services />
         <Consultation />
+        <FollowInstagram />
         <Footer />
       </div>
 

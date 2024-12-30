@@ -7,9 +7,9 @@ const App = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setMinLoadingTime(false);
-    }, 3000); // 3 ثانیه
+    }, 3000);
 
-    return () => clearTimeout(timer); // تمیز کردن تایمر
+    return () => clearTimeout(timer);
   }, []);
 
   if (minLoadingTime) {

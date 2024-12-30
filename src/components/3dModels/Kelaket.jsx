@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { AnimationMixer } from "three";
+import kelaketModel from '../../assets/models/kelaket.gltf'
 
 const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   const { scene, animations } = useGLTF(url);
@@ -24,7 +25,9 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   useEffect(() => {
     if (animations && animations.length > 0) {
       mixer.current = new AnimationMixer(scene);
-      actions.current = animations.map((clip) => mixer.current.clipAction(clip));
+      actions.current = animations.map((clip) =>
+        mixer.current.clipAction(clip)
+      );
       if (animations[0]) {
         setAnimationLength(animations[0].duration);
       }
@@ -53,7 +56,7 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   );
 };
 
-const Kelaket = () => {
+const Instagram = () => {
   const [playAnimation, setPlayAnimation] = useState(false);
 
   const handleAnimationEnd = () => {
@@ -73,26 +76,20 @@ const Kelaket = () => {
         onClick={handleClick}
       >
         <Canvas camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}>
-          {/* نور محیطی */}
           <ambientLight intensity={0.5} />
-          {/* نور مستقیم */}
           <directionalLight position={[5, 5, 5]} intensity={25} />
           <directionalLight position={[-5, 5, -5]} intensity={25} />
-          {/* نور از طرفین */}
           <pointLight position={[10, 0, 0]} intensity={0.5} />
           <pointLight position={[-10, 0, 0]} intensity={0.5} />
-          {/* نور از بالا */}
           <spotLight
             position={[0, 10, 0]}
             angle={0.3}
             penumbra={1}
             intensity={1}
           />
-          {/* کنترل‌های دوربین */}
           <OrbitControls enableZoom={false} />
-          {/* بارگذاری مدل انیمیشنی */}
           <ModelWithAnimation
-            url="/kelaket.gltf"
+            url={kelaketModel}
             playAnimation={playAnimation}
             onAnimationEnd={handleAnimationEnd}
           />
@@ -102,4 +99,4 @@ const Kelaket = () => {
   );
 };
 
-export default Kelaket;
+export default Instagram;
