@@ -8,7 +8,6 @@ const Title = ({ title, size, circle }) => {
         <h3 style={{ fontSize: size }} className="font-bold text-[#FF3131]">
           {title}
         </h3>
-
         {circle ? <FloatingCircles /> : null}
       </div>
     </div>

@@ -5,11 +5,11 @@ import FooterInfo from "./FooterInfo";
 
 const Footer = () => {
   return (
-    <div>
+    <footer>
         <FooterSunRise />
         <FooterInfo />
         <Copyright />
-    </div>
+    </footer>
   );
 };
 

@@ -7,10 +7,10 @@ import motion from "../../assets/images/motion.png";
 
 const Cards = () => {
   const images = [
-    { id: 1, src: content, alt: "content", title: "کمپین تبلیغاتی" },
-    { id: 2, src: effect, alt: "effect", title: "جلوه های ویژه" },
-    { id: 3, src: imaging, alt: "imaging", title: "تصویر برداری" },
-    { id: 4, src: motion, alt: "motion", title: "موشن گرافیک" },
+    { id: 1, src: content, alt: "content", title: "کمپین تبلیغاتی", link:"/campaigns" },
+    { id: 2, src: effect, alt: "effect", title: "جلوه های ویژه", link:"/vfx" },
+    { id: 3, src: imaging, alt: "imaging", title: "تصویر برداری", link:"/videography" },
+    { id: 4, src: motion, alt: "motion", title: "موشن گرافیک", link:"/motion-graphics" },
   ];
 
   return (
@@ -22,6 +22,7 @@ const Cards = () => {
             alt={image.alt}
             title={image.title}
             id={image.id}
+            link={image.link}
           />
         ))}
       </div>

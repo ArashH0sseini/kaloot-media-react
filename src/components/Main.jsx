@@ -1,30 +1,21 @@
 import React from "react";
-import Kelaket from "./3dModels/Kelaket";
+import { BrowserRouter as Router } from "react-router-dom";
+import Pages from "./Pages";
 import Footer from "./footer/Footer";
-import Services from "./services/Services";
 import Header from "./header/Header";
 import { Container, Hamburger } from "./styles";
-import Consultation from "./consultation/consultation";
-import FollowInstagram from "./Instagram/FollowInstagram";
 
 const Main = () => {
   return (
-    <Container>
-      <div className="w-full absolute top-0 bg-gradient-to-b from-[rgba(0,0,0,0.6)] via-[rgb(255,65,65)] to-[rgb(0,0,0)]">
-        <Header />
-        <Kelaket />
-        <Services />
-        <Consultation />
-        <FollowInstagram />
-        <Footer />
-      </div>
-
-      {/* <Hamburger>
-        <div />
-        <div />
-        <div />
-      </Hamburger> */}
-    </Container>
+    <Router>
+      <Container>
+        <div className="w-full absolute top-0 bg-gradient-to-b from-[rgba(0,0,0,0.6)] via-[rgb(255,65,65)] to-[rgb(0,0,0)]">
+          <Header />
+            <Pages />
+          <Footer />
+        </div>
+      </Container>
+    </Router>
   );
 };
 

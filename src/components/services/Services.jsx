@@ -4,10 +4,14 @@ import Title from "../Title";
 
 const Services = () => {
   return (
-    <div className="relative flex flex-col items-center justify-center">
-      <Title title="خدمات ما" size="30px" circle={true} />
-      <Cards />
-    </div>
+    <section className="flex flex-col items-center justify-center">
+      <header className="relative w-full">
+        <Title title="خدمات ما" size="30px" circle={true} />
+      </header>
+      <main className="w-full">
+        <Cards />
+      </main>
+    </section>
   );
 };
 

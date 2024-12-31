@@ -5,11 +5,12 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const ROTATION_RANGE = 32.5;
 const HALF_ROTATION_RANGE = 32.5 / 2;
 
-const Card = ({ img, id, title, alt }) => {
+const Card = ({ img, id, title, alt, link }) => {
   const cardRef = useRef(null);
 
   const x = useMotionValue(0);
@@ -72,7 +73,7 @@ const Card = ({ img, id, title, alt }) => {
   };
 
   return (
-    <motion.div
+    <motion.article
       id={id}
       ref={cardRef}
       onMouseMove={(e) => handleMove(e, false)}
@@ -86,6 +87,7 @@ const Card = ({ img, id, title, alt }) => {
       }}
       className="relative rounded-[70px] md:rounded-[50px] transform-gpu overflow-hidden"
     >
+      <Link to={link}>
       {/* لایه نور */}
       <div className="shine absolute inset-0 z-10 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
@@ -103,7 +105,8 @@ const Card = ({ img, id, title, alt }) => {
           </h6>
         </div>
       </div>
-    </motion.div>
+      </Link>
+    </motion.article>
   );
 };
 

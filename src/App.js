@@ -16,7 +16,11 @@ const App = () => {
     return <Loading />;
   }
 
-  return <Suspense fallback={<Loading />}><LazyComponent /></Suspense>;
+  return (
+      <Suspense fallback={<Loading />}>
+        <LazyComponent />
+      </Suspense>
+  )
 };
 
 export default App;
