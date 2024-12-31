@@ -75,9 +75,12 @@ const Form = () => {
   };
 
   return (
-    <div className="flex items-center justify-center my-8">
+    <div className="flex items-center justify-center ">
       <Toaster position="bottom-center" reverseOrder={false} />
-      <div className="max-w-md w-full p-6 rounded-lg shadow-lg bg-black/20 backdrop-blur-md border border-white/30">
+      <div className="max-w-md w-full ">
+      <h3 className="text-center text-white/80 mb-4">
+            یا با پر کردن فرم در اولین فرصت باهات تماس میگیریم
+          </h3>
         <form onSubmit={handleSubmit} autoComplete="off">
           <div className="mb-4">
             <input

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import triangleSrc from '../../assets/images/neon.png'
 const FlashingArrows = ({rotate,left,top}) => {
-  const [activeStates, setActiveStates] = useState([false, false, false]); // حالت روشن/خاموش هر فلش
-  const [step, setStep] = useState(0); // مرحله انیمیشن
-  const [pause, setPause] = useState(false); // حالت توقف در مراحل خاص
+  const [activeStates, setActiveStates] = useState([false, false, false]);
+  const [step, setStep] = useState(0);
+  const [pause, setPause] = useState(false); 
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -11,36 +11,30 @@ const FlashingArrows = ({rotate,left,top}) => {
         const newStates = [...prevStates];
 
         if (pause) {
-          // وقتی در مرحله توقف هستیم، انیمیشن ثابت می‌ماند
           return newStates;
         }
 
-        // مدیریت مراحل انیمیشن
         if (step < 3) {
-          // روشن شدن فلش‌ها
           newStates[step] = true;
           setStep(step + 1);
         } else if (step === 3) {
-          // توقف زمانی که هر سه فلش روشن هستند
           setPause(true);
-          setTimeout(() => setPause(false), 500); // توقف برای 1 ثانیه
+          setTimeout(() => setPause(false), 500);
           setStep(step + 1);
         } else if (step > 3 && step < 7) {
-          // خاموش شدن فلش‌ها
           newStates[6 - step] = false;
           setStep(step + 1);
         } else if (step === 7) {
-          // توقف زمانی که همه فلش‌ها خاموش شده‌اند
           setPause(true);
-          setTimeout(() => setPause(false), 500); // توقف برای 1 ثانیه
-          setStep(0); // بازگشت به مرحله اول
+          setTimeout(() => setPause(false), 500);
+          setStep(0);
         }
 
         return newStates;
       });
-    }, 500); // تغییر وضعیت هر 500 میلی‌ثانیه
+    }, 500);
 
-    return () => clearInterval(interval); // پاک کردن تایمر هنگام خروج از کامپوننت
+    return () => clearInterval(interval);
   }, [step, pause]);
 
   return (
@@ -55,8 +49,8 @@ const FlashingArrows = ({rotate,left,top}) => {
           }`}
           style={{
             rotate: rotate,
-            left: `${index * left}px`, // فاصله فلش‌ها به سمت راست
-            top: `${index * top}px`, // فاصله فلش‌ها به سمت پایین
+            left: `${index * left}px`,
+            top: `${index * top}px`,
           }}
         />
       ))}

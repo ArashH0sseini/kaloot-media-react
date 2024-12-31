@@ -3,7 +3,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 
 const ConsultationButton = () => {
   return (
-    <div className="flex items-center justify-center">
+    <div className="w-full flex items-center justify-center">
       <div className="w-2/3 flex items-center justify-center p-1 rounded-xl hover:scale-110 transform 
         transition duration-300 animated-background bg-gradient-to-r from-[#ffb71b] via-[#ffae00] to-[#ff7301] shadow-[0_0_20px_5px_rgb(255,174,0)]">
       <a

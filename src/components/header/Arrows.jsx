@@ -3,7 +3,7 @@ import FlashingArrows from "../header/FlashingArrows";
 
 const Arrows = () => {
   return (
-    <div className="w-full flex items-center justify-between mt-10 px-10">
+    <div className="w-full flex items-center justify-between mt-10 px-10 sm:px-16 md:px-28 lg:px-48 xl:px-72">
       <FlashingArrows rotate="100deg" top={25} left={-25} />
       <FlashingArrows rotate="140deg" top={25} left={25}/>
     </div>

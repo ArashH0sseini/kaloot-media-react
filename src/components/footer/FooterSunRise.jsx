@@ -17,7 +17,7 @@ const FooterSunRise = () => {
   return (
     <div ref={ref}>
       <div className="flex items-center justify-center">
-        <div className="w-3/5 opacity-75">
+        <div className="w-1/2 sm:w-[30%] md:w-[20%] opacity-75">
           <motion.img
             src={sunrise}
             alt="Sunrise"
