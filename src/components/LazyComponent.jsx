@@ -1,5 +1,5 @@
 import { lazy, useState } from "react";
-import { FadeIn, LeftMiddle } from "../components/styles";
+import { FadeIn, LeftMiddle } from "../helpers/styles";
 const Main = lazy(() => import("../components/Main"));
 const Rolls = lazy(() => import("./3dModels/Rolls"));
 
