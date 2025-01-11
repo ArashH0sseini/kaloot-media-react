@@ -72,7 +72,7 @@ const Card = ({ img, id, title, alt, link }) => {
         transformStyle: "preserve-3d",
         transform,
       }}
-      className="relative rounded-[70px] md:rounded-[50px] transform-gpu overflow-hidden"
+      className="relative rounded-[60px] md:rounded-[50px] transform-gpu overflow-hidden"
     >
       <Link to={link}>
         <div className="shine absolute inset-0 z-10 opacity-0 pointer-events-none transition-opacity duration-300"></div>
