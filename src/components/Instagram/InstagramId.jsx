@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const InstagramText3D = () => {
+const InstagramId = () => {
   const textAnimation = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 2, ease: "easeOut" } },
@@ -17,10 +17,9 @@ const InstagramText3D = () => {
         variants={textAnimation}
       >
         kalootmedia@
-      
       </motion.span>
     </div>
   );
 };
 
-export default InstagramText3D;
+export default InstagramId;

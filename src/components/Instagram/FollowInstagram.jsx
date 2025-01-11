@@ -1,6 +1,6 @@
 import React from 'react'
 import Instagram from '../3dModels/Instagram'
-import InstagramText3D from '../3dModels/InstagramText3D';
+import InstagramText3D from './InstagramId';
 
 const FollowInstagram = () => {
   return (

@@ -2,7 +2,6 @@ import React from "react";
 import Footer from "../footer/Footer";
 import kalootLogo from "../../assets/images/kaloot-logo.png";
 import background from "../../assets/images/effect.png";
-import WhiteBoard from "../3dModels/WhiteBoard";
 import { Link } from "react-router-dom";
 
 const VFXPage = () => {

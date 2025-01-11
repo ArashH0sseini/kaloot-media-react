@@ -4,6 +4,8 @@ import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import { AnimationMixer } from "three";
 import whiteboard from "../../assets/models/whiteboard.glb";
 
+useGLTF.preload(whiteboard);
+
 const ModelWithAnimation = ({ url, triggerAnimation, isPlaying, initialFrame }) => {
   const { scene, animations } = useGLTF(url);
   const mixer = useRef(null);

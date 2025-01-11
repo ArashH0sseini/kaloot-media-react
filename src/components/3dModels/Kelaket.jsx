@@ -4,6 +4,8 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { AnimationMixer } from "three";
 import kelaketModel from '../../assets/models/kelaket.gltf'
 
+useGLTF.preload(kelaketModel);
+
 const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   const { scene, animations } = useGLTF(url);
   const mixer = useRef(null);
@@ -11,17 +13,17 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   const modelRef = useRef();
   const [animationLength, setAnimationLength] = useState(0);
 
-  // چرخش مداوم
+
   useFrame(() => {
     if (modelRef.current) {
-      modelRef.current.rotation.y += 0.01; // سرعت چرخش (0.01 را می‌توانید تغییر دهید)
+      modelRef.current.rotation.y += 0.01;
     }
     if (mixer.current) {
-      mixer.current.update(0.01); // آپدیت انیمیشن‌ها
+      mixer.current.update(0.01);
     }
   });
 
-  // مقداردهی اولیه انیمیشن‌ها
+
   useEffect(() => {
     if (animations && animations.length > 0) {
       mixer.current = new AnimationMixer(scene);
@@ -34,7 +36,7 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
     }
   }, [animations, scene]);
 
-  // کنترل پخش یا توقف انیمیشن
+
   useEffect(() => {
     if (playAnimation && actions.current.length > 0) {
       actions.current.forEach((action) => action.reset().play());
@@ -48,7 +50,7 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
 
   return (
     <primitive
-      ref={modelRef} // افزودن مرجع به مدل
+      ref={modelRef}
       object={scene}
       scale={[4, 4, 4]}
       position={[0, -5, 0]}

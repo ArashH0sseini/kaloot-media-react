@@ -6,6 +6,8 @@ import { AnimationMixer } from "three";
 import { useInView } from "react-intersection-observer";
 import instagramModel from "../../assets/models/insta.gltf";
 
+useGLTF.preload(instagramModel);
+
 const AnimatedModel = ({ url, playAnimation }) => {
   const { scene, animations } = useGLTF(url);
   const mixer = useRef(null);

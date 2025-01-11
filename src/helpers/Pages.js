@@ -11,7 +11,7 @@ import ScrollToTop from "./ScrollToTop";
 const Pages = () => {
 
   return (
-    <div>
+    <>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<App />} >
@@ -22,7 +22,7 @@ const Pages = () => {
           <Route path="/motion" element={<MotionGraphicsPage />} />
         </Route>
       </Routes>
-    </div>
+    </>
   );
 };
 

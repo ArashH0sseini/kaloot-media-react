@@ -8,7 +8,6 @@ import {
 import { Link } from "react-router-dom";
 
 const ROTATION_RANGE = 32.5;
-const HALF_ROTATION_RANGE = 32.5 / 2;
 
 const Card = ({ img, id, title, alt, link }) => {
   const cardRef = useRef(null);
@@ -85,8 +84,8 @@ const Card = ({ img, id, title, alt, link }) => {
           }}
         >
           <img src={img} alt={alt} className="w-full h-full object-cover" />
-          <div className="absolute w-[85%] top-20 left-1/2 transform -translate-x-1/2 bg-white/40 shadow-lg rounded-xl px-4 py-3">
-            <h6 className="text-white font-extrabold text-2xl sm:text-xl text-center">
+          <div className="absolute w-[85%] top-10 left-1/2 transform -translate-x-1/2 bg-white/40 shadow-lg rounded-xl px-4 py-3">
+            <h6 className="text-white font-extrabold text-2xl sm:text-xl text-center text-shadow-xl">
               {title}
             </h6>
           </div>
