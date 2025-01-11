@@ -12,6 +12,18 @@ const AnimatedModel = ({ url, playAnimation }) => {
   const modelRef = useRef();
   const [shouldRotate, setShouldRotate] = useState(false);
 
+  // Use useFrame for animations
+  useFrame((state, delta) => {
+    if (shouldRotate && modelRef.current) {
+      modelRef.current.rotation.y += 0.03; // Smooth rotation
+    }
+
+    // Update mixer (animation)
+    if (mixer.current) {
+      mixer.current.update(delta);
+    }
+  });
+
   useEffect(() => {
     const applyMaterials = () => {
       const gradientTexture = new THREE.CanvasTexture(createInstagramGradient());
@@ -57,23 +69,6 @@ const AnimatedModel = ({ url, playAnimation }) => {
       }
     };
   }, [playAnimation, animations, scene]);
-
-  useEffect(() => {
-    const clock = new THREE.Clock();
-    const animate = () => {
-      requestAnimationFrame(animate);
-      if (mixer.current) mixer.current.update(clock.getDelta());
-    };
-    animate();
-
-    return () => clock.stop();
-  }, []);
-
-  useFrame(() => {
-    if (shouldRotate && modelRef.current) {
-      modelRef.current.rotation.y += 0.03;
-    }
-  });
 
   useEffect(() => {
     if (playAnimation) {
