@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import { Environment, useGLTF } from "@react-three/drei";
 import { AnimationMixer } from "three";
 import { useInView } from "react-intersection-observer";
 import instagramModel from "../../assets/models/insta.gltf";
@@ -68,7 +68,6 @@ const AnimatedModel = ({ url, playAnimation }) => {
     return () => clock.stop();
   }, []);
 
-
   useFrame(() => {
     if (shouldRotate && modelRef.current) {
       modelRef.current.rotation.y += 0.03;
@@ -81,7 +80,7 @@ const AnimatedModel = ({ url, playAnimation }) => {
     }
   }, [playAnimation]);
 
-  return <primitive ref={modelRef} object={scene} scale={[3.8, 3.8, 3.8]} position={[0, 0, -2]} />;
+  return <primitive ref={modelRef} object={scene} scale={[3, 3, 3]} position={[0, 0, -2]} />;
 };
 
 const createInstagramGradient = () => {
@@ -119,7 +118,6 @@ const Instagram = () => {
         <Environment preset="city" />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
         <ambientLight intensity={0.5} />
-        <OrbitControls enableZoom={false} />
         <AnimatedModel url={instagramModel} playAnimation={playAnimation} />
       </Canvas>
     </div>
