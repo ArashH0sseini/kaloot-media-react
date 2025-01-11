@@ -21,7 +21,6 @@ const ModelWithAnimation = ({ url, triggerAnimation, isPlaying, initialFrame }) 
         action.reset();
       });
 
-
       if (actions.current[0] && initialFrame !== undefined) {
         actions.current[0].reset();
         actions.current[0].play();
@@ -80,11 +79,6 @@ const WhiteBoard = () => {
             penumbra={1}
             intensity={1.5}
             castShadow
-          />
-          <OrbitControls
-            enableZoom={false}
-            enablePan={false}
-            maxPolarAngle={Math.PI / 2}
           />
           <ModelWithAnimation
             url={whiteboard}
