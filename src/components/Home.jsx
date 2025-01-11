@@ -26,7 +26,7 @@ const Home = () => {
           </div>
           <Services />
           <ConsultationForm />
-          {/* <FollowInstagram /> */}
+          <FollowInstagram />
         </main>
         <Footer />
       </div>
