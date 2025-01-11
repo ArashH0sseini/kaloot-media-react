@@ -2,10 +2,9 @@ import React from "react";
 import Footer from "../footer/Footer";
 import kalootLogo from "../../assets/images/kaloot-logo.png";
 import background from "../../assets/images/imaging.png";
-import WhiteBoard from "../3dModels/WhiteBoard";
 import { Link } from "react-router-dom";
 
-const VideoGraphyPage = () => {
+const VideoPage = () => {
   return (
     <div className="w-full absolute top-0 bg-gradient-to-b from-[rgb(0,0,0)] to-[#C60A0A]">
     <div className="absolute z-0 opacity-10 w-full h-[1100px]">
@@ -69,4 +68,4 @@ const VideoGraphyPage = () => {
   )
 }
 
-export default VideoGraphyPage
+export default VideoPage;

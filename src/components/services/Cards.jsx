@@ -9,8 +9,8 @@ const Cards = () => {
   const images = [
     { id: 1, src: content, alt: "content", title: "کمپین تبلیغاتی", link:"/campaigns" },
     { id: 2, src: effect, alt: "effect", title: "جلوه های ویژه", link:"/vfx" },
-    { id: 3, src: imaging, alt: "imaging", title: "تصویر برداری", link:"/videography" },
-    { id: 4, src: motion, alt: "motion", title: "موشن گرافیک", link:"/motion-graphics" },
+    { id: 3, src: imaging, alt: "imaging", title: "تصویر برداری", link:"/Video" },
+    { id: 4, src: motion, alt: "motion", title: "موشن گرافیک", link:"/motion" },
   ];
 
   return (

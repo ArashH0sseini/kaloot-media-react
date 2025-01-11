@@ -4,7 +4,7 @@ import App from '../App';
 import Home from "../components/Home";
 import VFXPage from "../components/pages/VFXPage";
 import CampaignPage from "../components/pages/CampaignPage";
-import VideoGraphyPage from "../components/pages/VideoGraphyPage";
+import VideoPage from "../components/pages/VideoPage";
 import MotionGraphicsPage from "../components/pages/MotionGraphicsPage";
 
 const Pages = () => {
@@ -14,8 +14,8 @@ const Pages = () => {
         <Route path="/" element={<Home />} />
         <Route path="/campaigns" element={<CampaignPage />} />
         <Route path="/vfx" element={<VFXPage />} />
-        <Route path="/videography" element={<VideoGraphyPage />} />
-        <Route path="/motion-graphics" element={<MotionGraphicsPage />} />
+        <Route path="/Video" element={<VideoPage />} />
+        <Route path="/motion" element={<MotionGraphicsPage />} />
       </Route>
     </Routes>
   );
