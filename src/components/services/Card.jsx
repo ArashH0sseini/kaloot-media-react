@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import {
   motion,
   useMotionTemplate,
@@ -8,10 +8,10 @@ import {
 import { Link } from "react-router-dom";
 
 const ROTATION_RANGE = 32.5;
+const HALF_ROTATION_RANGE = 32.5 / 2;
 
 const Card = ({ img, id, title, alt, link }) => {
   const cardRef = useRef(null);
-  const [isInteracting, setIsInteracting] = useState(false);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -21,19 +21,12 @@ const Card = ({ img, id, title, alt, link }) => {
 
   const transform = useMotionTemplate`rotateX(${xSpring}deg) rotateY(${ySpring}deg)`;
 
-  const disableScroll = () => {
-    document.body.style.overflow = "hidden";
-  };
 
-  const enableScroll = () => {
-    document.body.style.overflow = "";
-  };
 
   const handleMove = (e, isTouch) => {
     const card = cardRef.current;
     if (!card) return;
 
-    if (isTouch) e.preventDefault();
 
     const rect = card.getBoundingClientRect();
     const clientX = isTouch ? e.touches[0].clientX : e.clientX;
@@ -65,18 +58,8 @@ const Card = ({ img, id, title, alt, link }) => {
       shine.style.opacity = "0";
     }
 
-    if (isInteracting) {
-      enableScroll();
-      setIsInteracting(false);
-    }
   };
 
-  const handleStart = () => {
-    if (!isInteracting) {
-      disableScroll();
-      setIsInteracting(true);
-    }
-  };
 
   return (
     <motion.article
@@ -84,7 +67,6 @@ const Card = ({ img, id, title, alt, link }) => {
       ref={cardRef}
       onMouseMove={(e) => handleMove(e, false)}
       onMouseLeave={handleEnd}
-      onTouchStart={handleStart}
       onTouchMove={(e) => handleMove(e, true)}
       onTouchEnd={handleEnd}
       style={{
