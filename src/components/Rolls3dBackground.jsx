@@ -1,16 +1,14 @@
 import { lazy, useState } from "react";
 import { FadeIn, LeftMiddle } from "../helpers/styles";
-const Main = lazy(() => import("../components/Main"));
 const Rolls = lazy(() => import("./3dModels/Rolls"));
 
-const LazyComponent = () => {
+const Rolls3dBackground = () => {
   const [speed, set] = useState(1);
 
   return (
     <>
       <Rolls speed={speed} />
       <FadeIn />
-      <Main />
       <LeftMiddle>
         <input
           type="range"
@@ -25,4 +23,4 @@ const LazyComponent = () => {
   );
 };
 
-export default LazyComponent;
+export default Rolls3dBackground;

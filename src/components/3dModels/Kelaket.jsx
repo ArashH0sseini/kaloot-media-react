@@ -8,7 +8,7 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   const { scene, animations } = useGLTF(url);
   const mixer = useRef(null);
   const actions = useRef([]);
-  const modelRef = useRef(); // مرجع برای چرخش مدل
+  const modelRef = useRef();
   const [animationLength, setAnimationLength] = useState(0);
 
   // چرخش مداوم
@@ -56,7 +56,7 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   );
 };
 
-const Instagram = () => {
+const Kelaket = () => {
   const [playAnimation, setPlayAnimation] = useState(false);
 
   const handleAnimationEnd = () => {
@@ -72,7 +72,7 @@ const Instagram = () => {
   return (
     <div className="w-full flex items-center justify-center">
       <div
-        className="rounded-3xl w-[50%] h-72 animated-background bg-gradient-to-r from-[#ffb71b] via-[#ffae00] to-[#ff8521] shadow-[0_0_20px_5px_rgb(255,174,0)] mt-2 mb-12"
+        className="rounded-3xl w-[70%] h-72 animated-background bg-gradient-to-r from-[#ffb71b] via-[#ffae00] to-[#ff8521] shadow-[0_0_20px_5px_rgb(255,174,0)] mt-2 mb-12"
         onClick={handleClick}
       >
         <Canvas camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}>
@@ -99,4 +99,4 @@ const Instagram = () => {
   );
 };
 
-export default Instagram;
+export default Kelaket;

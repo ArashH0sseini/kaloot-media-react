@@ -6,10 +6,19 @@ const FloatingCircles = () => {
     rightCircle: { x: "89%", y: "80%" },
   });
   const [stopped, setStopped] = useState(false);
-  const [scrollLimit, setScrollLimit] = useState(3200); // مقدار دینامیک برای limit
+  const [scrollLimit, setScrollLimit] = useState(3200);
+  const [scrollStart, setScrollStart] = useState(500);
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
+
+    if (scrollY < scrollStart) {
+      setCirclePositions({
+        leftCircle: { x: "11.8%", y: "80%" },
+        rightCircle: { x: "89%", y: "80%" },
+      });
+      return;
+    }
 
     if (scrollY < scrollLimit && stopped) {
       setStopped(false);
@@ -27,8 +36,8 @@ const FloatingCircles = () => {
       return;
     }
 
-    const horizontalMovement = Math.min(scrollY / 12, 40);
-    const verticalMovement = Math.max(0, (scrollY - 400) / 0.7);
+    const horizontalMovement = Math.min((scrollY - scrollStart) / 12, 40);
+    const verticalMovement = Math.max(0, (scrollY - scrollStart - 400) / 0.7);
     const curveMovement = Math.sin(verticalMovement / 100) * 50;
 
     setCirclePositions({
@@ -46,21 +55,23 @@ const FloatingCircles = () => {
   const handleResize = () => {
     const screenWidth = window.innerWidth;
 
-    // تنظیم موقعیت‌ها بر اساس عرض صفحه
     if (screenWidth < 768) {
-      setScrollLimit(2700); // مقدار کم برای موبایل
+      setScrollLimit(2700);
+      setScrollStart(600);
       setCirclePositions({
         leftCircle: { x: "15%", y: "85%" },
         rightCircle: { x: "85%", y: "85%" },
       });
     } else if (screenWidth < 1024) {
-      setScrollLimit(2600); // مقدار متوسط برای تبلت
+      setScrollLimit(2600);
+      setScrollStart(700);
       setCirclePositions({
         leftCircle: { x: "12%", y: "82%" },
-        rightCircle: { x: "20%", y: "82%" },
+        rightCircle: { x: "88%", y: "82%" },
       });
     } else {
-      setScrollLimit(3200); // مقدار پیش‌فرض برای دسکتاپ
+      setScrollLimit(3200);
+      setScrollStart(800);
       setCirclePositions({
         leftCircle: { x: "11.8%", y: "80%" },
         rightCircle: { x: "89%", y: "80%" },
@@ -72,7 +83,6 @@ const FloatingCircles = () => {
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
 
-    // Call resize handler initially to set proper limit
     handleResize();
 
     return () => {

@@ -22,18 +22,18 @@ const Card = ({ img, id, title, alt, link }) => {
   const transform = useMotionTemplate`rotateX(${xSpring}deg) rotateY(${ySpring}deg)`;
 
   const disableScroll = () => {
-    document.body.style.overflow = "hidden"; // غیرفعال کردن اسکرول
+    document.body.style.overflow = "hidden";
   };
 
   const enableScroll = () => {
-    document.body.style.overflow = ""; // بازگرداندن اسکرول
+    document.body.style.overflow = "";
   };
 
   const handleMove = (e, isTouch) => {
     const card = cardRef.current;
     if (!card) return;
 
-    if (isTouch) e.preventDefault(); // جلوگیری از اسکرول پیش‌فرض در موبایل
+    if (isTouch) e.preventDefault();
 
     const rect = card.getBoundingClientRect();
     const clientX = isTouch ? e.touches[0].clientX : e.clientX;
@@ -65,11 +65,11 @@ const Card = ({ img, id, title, alt, link }) => {
       shine.style.opacity = "0";
     }
 
-    enableScroll(); // فعال کردن دوباره اسکرول
+    enableScroll();
   };
 
   const handleStart = () => {
-    disableScroll(); // غیرفعال کردن اسکرول هنگام لمس
+    disableScroll();
   };
 
   return (
@@ -88,23 +88,21 @@ const Card = ({ img, id, title, alt, link }) => {
       className="relative rounded-[70px] md:rounded-[50px] transform-gpu overflow-hidden"
     >
       <Link to={link}>
-      {/* لایه نور */}
-      <div className="shine absolute inset-0 z-10 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+        <div className="shine absolute inset-0 z-10 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
-      {/* محتوای کارت */}
-      <div
-        className="relative transform-gpu"
-        style={{
-          transform: "translateZ(75px)",
-        }}
-      >
-        <img src={img} alt={alt} className="w-full h-full object-cover" />
-        <div className="absolute w-[85%] top-20 left-1/2 transform -translate-x-1/2 bg-white/40 shadow-lg rounded-xl px-4 py-3">
-          <h6 className="text-white font-extrabold text-2xl sm:text-xl text-center">
-            {title}
-          </h6>
+        <div
+          className="relative transform-gpu"
+          style={{
+            transform: "translateZ(75px)",
+          }}
+        >
+          <img src={img} alt={alt} className="w-full h-full object-cover" />
+          <div className="absolute w-[85%] top-20 left-1/2 transform -translate-x-1/2 bg-white/40 shadow-lg rounded-xl px-4 py-3">
+            <h6 className="text-white font-extrabold text-2xl sm:text-xl text-center">
+              {title}
+            </h6>
+          </div>
         </div>
-      </div>
       </Link>
     </motion.article>
   );

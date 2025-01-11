@@ -1,6 +1,6 @@
 import { Suspense, useState, lazy, useEffect } from 'react'
 import Loading from './components/Loading';
-const LazyComponent = lazy(() => import('./components/LazyComponent'));
+const Main = lazy(() => import("./components/Main"));
 const App = () => {
   const [minLoadingTime, setMinLoadingTime] = useState(true);
 
@@ -18,7 +18,7 @@ const App = () => {
 
   return (
       <Suspense fallback={<Loading />}>
-        <LazyComponent />
+        <Main />
       </Suspense>
   )
 };

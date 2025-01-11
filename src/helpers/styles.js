@@ -48,4 +48,5 @@ export const LeftMiddle = styled.div`
   font-size: 12px;
   transform: rotate(90deg) translate3d(50%, 0, 0);
   transform-origin: 100% 50%;
+  z-index: 10;
 `
