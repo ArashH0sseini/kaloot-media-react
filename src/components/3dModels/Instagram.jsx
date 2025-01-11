@@ -29,8 +29,8 @@ const AnimatedModel = ({ url, playAnimation }) => {
           } else {
             child.material = new THREE.MeshStandardMaterial({
               map: gradientTexture,
-              emissiveMap: gradientTexture, // گرادیانت برای نوردهی
-              emissive: 0x222222, // شدت نوردهی
+              emissiveMap: gradientTexture,
+              emissive: 0x222222,
               roughness: 0.5,
               metalness: 0.5,
             });
@@ -90,26 +90,23 @@ const createInstagramGradient = () => {
   canvas.height = 1024;
   const ctx = canvas.getContext("2d");
 
-
   const gradient = ctx.createRadialGradient(
-    canvas.width / 3, 
-    canvas.height / 3, 
-    0, 
-    canvas.width / 3, 
-    canvas.height / 3, 
-    canvas.width / 3
+    canvas.width / 2, 
+    canvas.height / 2, 
+    canvas.width / 8, 
+    canvas.width / 2, 
+    canvas.height / 2, 
+    canvas.width / 2
   );
 
-
-  gradient.addColorStop(0.5, "#dd2a7b");
-  gradient.addColorStop(1, "#8134af");
+  gradient.addColorStop(0, "#ff007f");
+  gradient.addColorStop(1, "#8000ff");
 
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   return canvas;
 };
-
 
 const Instagram = () => {
   const { ref, inView } = useInView({

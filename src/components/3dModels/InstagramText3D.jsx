@@ -10,13 +10,14 @@ const InstagramText3D = () => {
   return (
     <div className="flex items-center justify-center">
       <motion.span
-        className="text-white text-[40px] font-bungee"
+        className="text-white text-[40px] font-bungee border-b-2 border-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={textAnimation}
       >
         kalootmedia@
+      
       </motion.span>
     </div>
   );
