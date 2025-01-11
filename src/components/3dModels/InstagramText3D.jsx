@@ -18,7 +18,7 @@ const RotatingText = () => {
         bevelThickness={0.1}
         bevelSize={0.04}
         bevelSegments={5}
-        position={[26, 3, 0]}
+        position={[0, 0, 0]}
         rotation={[0, Math.PI / 10, 0]}
       >
         @kalootmedia
@@ -37,7 +37,7 @@ const RotatingText = () => {
 const InstagramText3D = () => {
   return (
     <div className="w-full">
-      <Canvas camera={{ position: [0, 4, 15], fov: 50 }}>
+      <Canvas camera={{ position: [0, 2, 10], fov: 75 }}>
         <Environment preset="sunset" />
         <ambientLight intensity={0.4} />
         <directionalLight position={[5, 5, 5]} intensity={1.2} />
