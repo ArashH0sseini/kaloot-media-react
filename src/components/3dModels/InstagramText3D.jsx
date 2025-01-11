@@ -18,7 +18,7 @@ const RotatingText = () => {
         bevelThickness={0.1}
         bevelSize={0.04}
         bevelSegments={5}
-        position={[23, 3, 0]}
+        position={[26, 3, 0]}
         rotation={[0, Math.PI / 10, 0]}
       >
         @kalootmedia
