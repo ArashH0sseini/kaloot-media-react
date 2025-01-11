@@ -68,10 +68,10 @@ const AnimatedModel = ({ url, playAnimation }) => {
     return () => clock.stop();
   }, []);
 
-  // چرخش مدل حول محور Y با شرط
+
   useFrame(() => {
     if (shouldRotate && modelRef.current) {
-      modelRef.current.rotation.y += 0.03; // سرعت چرخش بیشتر
+      modelRef.current.rotation.y += 0.03;
     }
   });
 
@@ -81,7 +81,7 @@ const AnimatedModel = ({ url, playAnimation }) => {
     }
   }, [playAnimation]);
 
-  return <primitive ref={modelRef} object={scene} scale={[3, 3, 3]} position={[0, 0, -2]} />;
+  return <primitive ref={modelRef} object={scene} scale={[3.8, 3.8, 3.8]} position={[0, 0, -2]} />;
 };
 
 const createInstagramGradient = () => {
@@ -114,7 +114,7 @@ const Instagram = () => {
   }, [inView]);
 
   return (
-    <div ref={ref} className="h-60">
+    <div ref={ref} className="h-80">
       <Canvas camera={{ position: [0, 2, 5], near: 0.1, far: 1000 }}>
         <Environment preset="city" />
         <directionalLight position={[5, 5, 5]} intensity={0.8} />
