@@ -11,14 +11,14 @@ const RotatingText = () => {
       <Text3D
         ref={textRef}
         font="/fonts/helvetiker_regular.typeface.json"
-        size={4}
+        size={3}
         height={3}
         curveSegments={12}
         bevelEnabled
         bevelThickness={0.1}
         bevelSize={0.04}
         bevelSegments={5}
-        position={[18, 3, 0]}
+        position={[20, 3, 0]}
         rotation={[0, Math.PI / 10, 0]}
       >
         @kalootmedia
