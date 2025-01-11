@@ -29,7 +29,8 @@ const AnimatedModel = ({ url, playAnimation }) => {
           } else {
             child.material = new THREE.MeshStandardMaterial({
               map: gradientTexture,
-              emissive: 0x000000,
+              emissiveMap: gradientTexture, // گرادیانت برای نوردهی
+              emissive: 0x222222, // شدت نوردهی
               roughness: 0.5,
               metalness: 0.5,
             });
@@ -85,12 +86,22 @@ const AnimatedModel = ({ url, playAnimation }) => {
 
 const createInstagramGradient = () => {
   const canvas = document.createElement("canvas");
-  canvas.width = 512;
-  canvas.height = 512;
+  canvas.width = 1024;
+  canvas.height = 1024;
   const ctx = canvas.getContext("2d");
 
-  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  gradient.addColorStop(1, "#dd2a7b");
+
+  const gradient = ctx.createRadialGradient(
+    canvas.width / 3, 
+    canvas.height / 3, 
+    0, 
+    canvas.width / 3, 
+    canvas.height / 3, 
+    canvas.width / 3
+  );
+
+
+  gradient.addColorStop(0.5, "#dd2a7b");
   gradient.addColorStop(1, "#8134af");
 
   ctx.fillStyle = gradient;
@@ -98,6 +109,7 @@ const createInstagramGradient = () => {
 
   return canvas;
 };
+
 
 const Instagram = () => {
   const { ref, inView } = useInView({
@@ -116,8 +128,8 @@ const Instagram = () => {
     <div ref={ref} className="h-80">
       <Canvas camera={{ position: [0, 2, 5], near: 0.1, far: 1000 }}>
         <Environment preset="city" />
-        <directionalLight position={[5, 5, 5]} intensity={0.8} />
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={1} />
+        <directionalLight position={[5, 5, 5]} intensity={1.5} />
         <AnimatedModel url={instagramModel} playAnimation={playAnimation} />
       </Canvas>
     </div>

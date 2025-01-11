@@ -6,8 +6,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'vazir': ['Vazir'],
-        'staatliches': ['Staatliches', 'sans-serif'], // اضافه کردن فونت
+        'vazir': ['Vazir', 'sans-serif'],
+        'staatliches': ['Staatliches', 'sans-serif'],
+        'bungee': ['Bungee', 'sans-serif']
       },
     },
   },

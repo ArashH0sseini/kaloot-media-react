@@ -4,7 +4,7 @@ import InstagramText3D from '../3dModels/InstagramText3D';
 
 const FollowInstagram = () => {
   return (
-    <div>
+    <div className='mb-20'>
         <Instagram />
         <InstagramText3D />
     </div>
