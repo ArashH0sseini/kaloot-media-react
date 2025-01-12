@@ -14,11 +14,11 @@ const FooterInfo = () => {
         </a>
       </div>
       <div className="text-white text-base md:text-lg md:my-4 flex items-center space-x-2 space-x-reverse border-2 border-b-0 md:border-b-2 border-white p-2 px-4 bg-white/10 backdrop-blur-lg border-white/20 rounded-xl rounded-b-none md:rounded-b-xl shadow-lg">
-        <MdOutlineAlternateEmail className="text-2xl" />
+        <MdOutlineAlternateEmail className="text-xl" />
         <span>پست الکترونیکی: Kalootmultimedia@gmail.com</span>
       </div>
       <div className="text-white text-base md:text-lg md:my-4 flex items-center space-x-2 space-x-reverse border-2 border-b-0 md:border-b-2 border-white p-2 px-4 bg-white/10 backdrop-blur-lg border-white/20 rounded-xl rounded-b-none md:rounded-b-xl shadow-lg">
-        <FaMapMarkerAlt className="text-2xl" />
+        <FaMapMarkerAlt className="text-xl" />
         <span>آدرس استودیو کلوت: کرمان،بلوار پزشک،خیابان بیهقی،کوچه4</span>
       </div>
     </div>

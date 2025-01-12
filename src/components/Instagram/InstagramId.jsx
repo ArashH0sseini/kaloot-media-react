@@ -10,7 +10,7 @@ const InstagramId = () => {
   return (
     <div className="flex items-center justify-center">
       <motion.span
-        className="text-white text-[40px] font-bungee border-b-2 border-white"
+        className="text-white text-[30px] font-bungee border-b-2 border-white"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}

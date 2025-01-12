@@ -4,7 +4,6 @@ const AboutUs = () => {
   return (
     <div className="w-full flex items-center justify-center p-6 py-8 my-6">
       <div class="w-[85%] md:w-[75%] p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg flex flex-col justify-center items-center">
-        {/* <h1 class="text-white text-[35px] font-semibold">درباره ما</h1> */}
         <p class="text-white text-xl text-justify leading-[45px]">
           کلوت آژانس تولید محتوا و تبلیغات دیجیتال، با تخصص در طراحی، مدیریت و
           اجرای کمپین‌های تبلیغاتی، تجربه‌ای متفاوت از بازاریابی دیجیتال را با

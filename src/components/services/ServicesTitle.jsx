@@ -1,5 +1,5 @@
 import React from "react";
-import FloatingCircles from "./ServicesFloatingCircles";
+import ServicesFloatingCircles from "./ServicesFloatingCircles";
 
 const ServicesTitle = ({ title, size, circle }) => {
   return (
@@ -8,7 +8,7 @@ const ServicesTitle = ({ title, size, circle }) => {
         <h3 style={{ fontSize: size }} className="font-bold text-[#FF3131]">
           {title}
         </h3>
-        {circle ? <FloatingCircles /> : null}
+        {circle ? <ServicesFloatingCircles /> : null}
       </div>
     </div>
   );

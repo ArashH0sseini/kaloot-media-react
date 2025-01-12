@@ -5,8 +5,9 @@ import Kelaket from "./3dModels/Kelaket";
 import Services from "./services/Services";
 import ConsultationForm from "./consultation/Consultation";
 import Footer from "./footer/Footer";
-import FollowInstagram from "./Instagram/FollowInstagram";
 import AboutUs from "./AboutUs";
+import FollowInstagram from "./Instagram/FollowInstagram";
+import Magazine from "./magazine/Magazine";
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
             <ConsultationForm />
             <FollowInstagram />
           </div>
+          {/* <Magazine /> */}
         </main>
         <Footer />
       </div>
