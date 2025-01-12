@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const ROTATION_RANGE = 32.5;
 
-const Card = ({ img, id, title, alt, link }) => {
+const ServicesCard = ({ img, id, title, alt, link }) => {
   const cardRef = useRef(null);
 
   const x = useMotionValue(0);
@@ -95,4 +95,4 @@ const Card = ({ img, id, title, alt, link }) => {
   );
 };
 
-export default Card;
+export default ServicesCard;

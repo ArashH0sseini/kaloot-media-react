@@ -1,5 +1,5 @@
 import React from "react";
-import Copyright from "./Copyright";
+import Copyright from "./FooterCopyright";
 import FooterSunRise from "./FooterSunRise";
 import FooterInfo from "./FooterInfo";
 

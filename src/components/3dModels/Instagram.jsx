@@ -14,13 +14,12 @@ const AnimatedModel = ({ url, playAnimation }) => {
   const modelRef = useRef();
   const [shouldRotate, setShouldRotate] = useState(false);
 
-  // Use useFrame for animations
+
   useFrame((state, delta) => {
     if (shouldRotate && modelRef.current) {
-      modelRef.current.rotation.y += 0.03; // Smooth rotation
+      modelRef.current.rotation.y += 0.03;
     }
 
-    // Update mixer (animation)
     if (mixer.current) {
       mixer.current.update(delta);
     }
@@ -119,7 +118,7 @@ const Instagram = () => {
   }, [inView]);
 
   return (
-    <div ref={ref} className="h-80">
+    <div ref={ref} className="h-64">
       <Canvas camera={{ position: [0, 2, 5], near: 0.1, far: 1000 }}>
         <Environment preset="city" />
         <ambientLight intensity={1} />

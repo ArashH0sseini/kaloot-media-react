@@ -3,7 +3,7 @@ import Header from "./header/Header";
 import Arrows from "./header/Arrows";
 import Kelaket from "./3dModels/Kelaket";
 import Services from "./services/Services";
-import ConsultationForm from "./consultation/ConsultationForm";
+import ConsultationForm from "./consultation/Consultation";
 import Footer from "./footer/Footer";
 import FollowInstagram from "./Instagram/FollowInstagram";
 import AboutUs from "./AboutUs";
@@ -25,8 +25,10 @@ const Home = () => {
             </div>
           </div>
           <Services />
-          <ConsultationForm />
-          <FollowInstagram />
+          <div className="flex flex-col items-center justify-center xl:flex-row xl:justify-between">
+            <ConsultationForm />
+            <FollowInstagram />
+          </div>
         </main>
         <Footer />
       </div>

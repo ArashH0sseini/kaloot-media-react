@@ -7,7 +7,7 @@ const FooterSunRise = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
   const [linesAnimCompleted, setLinesAnimCompleted] = useState(false);
 
-  // وقتی که انیمیشن خط‌ها تمام می‌شود، عکس نمایش داده شود
+
   useEffect(() => {
     if (inView) {
       setLinesAnimCompleted(true);
@@ -23,12 +23,12 @@ const FooterSunRise = () => {
             alt="Sunrise"
             initial={{ scaleY: 0, opacity: 0, height: 0 }}
             animate={{
-              scaleY: linesAnimCompleted ? 1 : 0, // از پایین به بالا رشد می‌کند
-              opacity: linesAnimCompleted ? 1 : 0, // از صفر به صد تغییر می‌کند
-              height: linesAnimCompleted ? "100%" : 0, // افزایش ارتفاع از صفر به صد
-              transition: { duration: 1, delay: 1 }, // تأخیر برای هماهنگی انیمیشن‌ها
+              scaleY: linesAnimCompleted ? 1 : 0,
+              opacity: linesAnimCompleted ? 1 : 0,
+              height: linesAnimCompleted ? "100%" : 0,
+              transition: { duration: 1, delay: 1 },
             }}
-            className="w-full object-cover origin-bottom" // استفاده از origin-bottom برای شروع از پایین
+            className="w-full object-cover origin-bottom"
           />
         </div>
       </div>
@@ -36,13 +36,13 @@ const FooterSunRise = () => {
         {Array.from({ length: 10 }).reverse().map((_, index) => (
           <motion.hr
             key={index}
-            initial={{ scaleX: 0, opacity: 0.1 }} // شروع از مقیاس صفر و اپاسیتی 10%
+            initial={{ scaleX: 0, opacity: 0.1 }}
             animate={{
-              scaleX: inView ? 1 : 0, // زمانی که وارد View شد از وسط باز شود
-              opacity: inView ? 0.1 + (9 - index) * 0.1 : 0.1, // اپاسیتی از 10 تا 100
+              scaleX: inView ? 1 : 0,
+              opacity: inView ? 0.1 + (9 - index) * 0.1 : 0.1,
               transition: {
-                delay: (9 - index) * 0.1, // تأخیر برای هر خط از پایین به بالا
-                duration: 1, // مدت زمان انیمیشن
+                delay: (9 - index) * 0.1,
+                duration: 1,
               },
             }}
             className="w-full h-[1px] shadow-lg border-t border-white bg-white origin-center"

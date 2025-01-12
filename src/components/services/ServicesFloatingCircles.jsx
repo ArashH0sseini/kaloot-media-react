@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const FloatingCircles = () => {
+const ServicesFloatingCircles = () => {
   const [circlePositions, setCirclePositions] = useState({
     leftCircle: { x: "11.8%", y: "80%" },
     rightCircle: { x: "89%", y: "80%" },
@@ -113,4 +113,4 @@ const FloatingCircles = () => {
   );
 };
 
-export default FloatingCircles;
+export default ServicesFloatingCircles;

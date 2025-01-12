@@ -1,10 +1,10 @@
 import React from "react";
-import FloatingCircles from "./services/FloatingCircles";
+import FloatingCircles from "./ServicesFloatingCircles";
 
-const Title = ({ title, size, circle }) => {
+const ServicesTitle = ({ title, size, circle }) => {
   return (
     <div className="absolute top-0 w-full">
-      <div className="relative w-[55%] sm:w-[30%] md:w-[25%] lg:w-[20%] text-center z-10 bg-white rounded-2xl py-2 px-4 shadow-lg m-auto">
+      <div className="relative w-[55%] sm:w-[40%] xl:w-[20%] text-center z-10 bg-white rounded-2xl py-2 px-4 shadow-lg m-auto">
         <h3 style={{ fontSize: size }} className="font-bold text-[#FF3131]">
           {title}
         </h3>
@@ -14,4 +14,4 @@ const Title = ({ title, size, circle }) => {
   );
 };
 
-export default Title;
+export default ServicesTitle;

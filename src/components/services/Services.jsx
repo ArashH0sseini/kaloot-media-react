@@ -1,6 +1,6 @@
 import React from "react";
-import Cards from "./Cards";
-import Title from "../Title";
+import Cards from "./ServicesCards";
+import Title from "./ServicesTitle";
 
 const Services = () => {
   return (
