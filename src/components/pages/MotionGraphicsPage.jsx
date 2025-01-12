@@ -3,6 +3,9 @@ import Footer from "../footer/Footer";
 import kalootLogo from "../../assets/images/kaloot-logo.png";
 import background from "../../assets/images/motion.png";
 import { Link } from "react-router-dom";
+import VideoPlayer from "../VideoPlayer";
+import motioncover from "../../assets/images/motioncover.png";
+import flowercover from "../../assets/images/flowercover.png";
 
 const MotionGraphicsPage = () => {
   return (
@@ -17,12 +20,12 @@ const MotionGraphicsPage = () => {
       </div>
       <div className="max-w-sm m-auto p-5 text-white z-10">
         <header>
-        <Link to="/">
-          <div className="w-[60px] h-[60px] animate-pulse shadow-[0_0_25px_2px_rgb(255,255,255)] bg-white bg-opacity-100 rounded-full">
-            <img src={kalootLogo} alt="logo" />
-          </div>
-        </Link>
-          
+          <Link to="/">
+            <div className="w-[60px] h-[60px] animate-pulse shadow-[0_0_25px_2px_rgb(255,255,255)] bg-white bg-opacity-100 rounded-full">
+              <img src={kalootLogo} alt="logo" />
+            </div>
+          </Link>
+
           <div className="flex flex-col my-6 space-y-4 items-center justify-center ">
             <h1 className="font-bold text-[40px]">موشن گرافیک</h1>
             <h2 className="text-xl leading-10 text-justify">
@@ -33,41 +36,17 @@ const MotionGraphicsPage = () => {
           </div>
         </header>
         <main className="my-20 flex flex-col items-center justify-center space-y-20">
-          <div
-            className="relative transform-gpu rounded-[70px] md:rounded-[50px]"
-            style={{
-              transform: "translateZ(75px)",
-            }}
-          >
-            <img
-              src={background}
-              alt="content"
-              className="w-full h-full object-cover rounded-[70px] md:rounded-[50px]"
-            />
-            <div className="absolute w-[85%] top-20 left-1/2 transform -translate-x-1/2 bg-white/40 shadow-lg rounded-xl px-4 py-3">
-              <h6 className="text-white font-extrabold text-2xl sm:text-xl text-center">
-                THUMBNAIL VIDEO
-              </h6>
-            </div>
-          </div>
+          <VideoPlayer
+            videoUrl="https://phoenixgameclub.ir/wp-content/uploads/motion.webm"
+            coverImage={motioncover}
+            isHorizontal={true}
+          />
 
-          <div
-            className="relative transform-gpu rounded-[70px] md:rounded-[50px]"
-            style={{
-              transform: "translateZ(75px)",
-            }}
-          >
-            <img
-              src={background}
-              alt="content"
-              className="w-full h-full object-cover rounded-[70px] md:rounded-[50px]"
-            />
-            <div className="absolute w-[85%] top-20 left-1/2 transform -translate-x-1/2 bg-white/40 shadow-lg rounded-xl px-4 py-3">
-              <h6 className="text-white font-extrabold text-2xl sm:text-xl text-center">
-                THUMBNAIL VIDEO
-              </h6>
-            </div>
-          </div>
+          <VideoPlayer
+            videoUrl="https://phoenixgameclub.ir/wp-content/uploads/flower.webm"
+            coverImage={flowercover}
+            isHorizontal={false}
+          />
         </main>
       </div>
       <Footer />
