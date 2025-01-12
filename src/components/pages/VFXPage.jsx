@@ -19,7 +19,6 @@ const VFXPage = () => {
     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#860808] pointer-events-none"></div>
   </div>
 
-  {/* Make sure this div has relative positioning */}
   <div className="max-w-sm m-auto p-5 text-white relative z-10">
     <header>
       <Link to="/">

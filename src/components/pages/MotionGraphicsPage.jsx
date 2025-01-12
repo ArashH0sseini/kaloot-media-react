@@ -9,7 +9,7 @@ import flowercover from "../../assets/images/flowercover.png";
 
 const MotionGraphicsPage = () => {
   return (
-    <div className="w-full absolute top-0 bg-gradient-to-b from-[rgb(0,0,0)] to-[#C60A0A]">
+    <div className="w-full relative bg-gradient-to-b from-[rgb(0,0,0)] to-[#C60A0A]">
       <div className="absolute z-0 opacity-10 w-full h-[1100px]">
         <img
           src={background}
@@ -18,8 +18,8 @@ const MotionGraphicsPage = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#860808] pointer-events-none"></div>
       </div>
-      <div className="max-w-sm m-auto p-5 text-white z-10">
-        <header>
+      <div className="max-w-sm m-auto p-5 text-white z-10 relative">
+        <header className="relative z-20">
           <Link to="/">
             <div className="w-[60px] h-[60px] animate-pulse shadow-[0_0_25px_2px_rgb(255,255,255)] bg-white bg-opacity-100 rounded-full">
               <img src={kalootLogo} alt="logo" />
