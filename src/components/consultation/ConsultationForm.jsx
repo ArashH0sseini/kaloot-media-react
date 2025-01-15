@@ -8,7 +8,7 @@ const ConsultationForm = () => {
     phone: "",
     message: "",
   });
-  const [errors, setErrors] = useState({}); // State for field-specific errors
+  const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
   const validatePhone = (phone) => {
@@ -20,7 +20,6 @@ const ConsultationForm = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
 
-    // Validate phone on each change
     if (name === "phone") {
       if (!validatePhone(value)) {
         setErrors({

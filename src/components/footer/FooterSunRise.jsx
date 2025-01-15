@@ -28,6 +28,8 @@ const FooterSunRise = () => {
               height: linesAnimCompleted ? "100%" : 0,
               transition: { duration: 1, delay: 1 },
             }}
+            style={{ filter: "drop-shadow(0px 0px 20px rgb(255, 145, 0))" }}
+
             className="w-full object-cover origin-bottom"
           />
         </div>

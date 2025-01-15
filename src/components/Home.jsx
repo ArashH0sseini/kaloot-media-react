@@ -30,7 +30,7 @@ const Home = () => {
             <ConsultationForm />
             <FollowInstagram />
           </div>
-          {/* <Magazine /> */}
+          <Magazine />
         </main>
         <Footer />
       </div>

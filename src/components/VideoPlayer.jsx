@@ -2,11 +2,12 @@ import React, { useState, useRef } from "react";
 import ReactPlayer from "react-player";
 import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp, FaRedo } from "react-icons/fa";
 
-const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {  // اضافه کردن پراپ isHorizontal
+const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {
   const [playing, setPlaying] = useState(false);
   const [muted, setMuted] = useState(false);
   const [played, setPlayed] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [seeking, setSeeking] = useState(false);
   const [showControls, setShowControls] = useState(false);
   const [reload, setReload] = useState(false);
   const playerRef = useRef(null);
@@ -27,7 +28,9 @@ const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {  // اضافه
   const toggleMute = () => setMuted(!muted);
 
   const handleProgress = (state) => {
-    setPlayed(state.played);
+    if (!seeking) {
+      setPlayed(state.played);
+    }
   };
 
   const handleDuration = (duration) => {
@@ -45,19 +48,28 @@ const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {  // اضافه
     return `${minutes}:${secs < 10 ? "0" : ""}${secs}`;
   };
 
-  const handleSeek = (event) => {
-    const newPlayed = parseFloat(event.target.value);
-    playerRef.current.seekTo(newPlayed);
-    setPlayed(newPlayed);
-    setReload(false);
+  const handleSeekStart = () => {
+    setSeeking(true);
   };
 
-  // استفاده از پراپ isHorizontal برای تغییر paddingTop
-  const paddingTopValue = isHorizontal ? "56.25%" : "177.78%"; // افقی: 16:9 و عمودی: نسبت دیگر
+  const handleSeekChange = (event) => {
+    const newPlayed = parseFloat(event.target.value);
+    setPlayed(newPlayed);
+  };
+
+  const handleSeekEnd = (event) => {
+    const newPlayed = parseFloat(event.target.value);
+    playerRef.current.seekTo(newPlayed);
+    setSeeking(false);
+  };
+
+  const paddingTopValue = isHorizontal ? "56.25%" : "177.78%";
 
   return (
-    <div className="video-player-container relative w-full max-w-xs mx-auto rounded-lg overflow-hidden shadow-lg">
-      <div className="relative" style={{ paddingTop: paddingTopValue }}>
+<div
+  className="video-player-container relative w-full max-w-lg mx-auto rounded-lg overflow-hidden shadow-lg"
+  style={{ maxWidth: isHorizontal ? "500px" : "300px" }}
+>      <div className="relative" style={{ paddingTop: paddingTopValue }}>
         <ReactPlayer
           ref={playerRef}
           url={videoUrl}
@@ -90,7 +102,9 @@ const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {  // اضافه
                 max="1"
                 step="0.01"
                 value={played}
-                onChange={handleSeek}
+                onMouseDown={handleSeekStart}
+                onChange={handleSeekChange}
+                onMouseUp={handleSeekEnd}
                 className="absolute top-0 left-0 w-full h-2 opacity-0 cursor-pointer"
               />
             </div>
