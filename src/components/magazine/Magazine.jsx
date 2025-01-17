@@ -1,5 +1,4 @@
 import React from "react";
-import MagazineTitle from "./MagazineTitle";
 import MagazineCards from "./MagazineCards";
 
 const Magazine = () => {
