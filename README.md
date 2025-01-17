@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Kaloot Media React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Kaloot Media یک پروژه وب است که به کاربران این امکان را می‌دهد تا به راحتی فرم مشاوره ارسال کنند و از خدمات رسانه‌ای استفاده کنند. این پروژه شامل فرانت‌اند و بک‌اند است که به‌طور مجزا برای مدیریت درخواست‌ها و ارسال ایمیل‌ها طراحی شده است.
 
-## Available Scripts
+## ویژگی‌ها
 
-In the project directory, you can run:
+- **فرم مشاوره**: کاربران می‌توانند درخواست مشاوره خود را از طریق فرم ارسال کنند.
+- **رابط کاربری مدرن**: طراحی واکنش‌گرا که تجربه کاربری را در تمامی دستگاه‌ها بهینه می‌کند.
+- **پشتیبانی از API**: درخواست‌ها از طریق API به سرور ارسال می‌شوند تا ایمیل‌ها به‌صورت خودکار ارسال شوند.
 
-### `npm start`
+## نصب و راه‌اندازی
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### نصب پیش‌نیازها
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+قبل از شروع، مطمئن شوید که Node.js و npm یا yarn روی سیستم شما نصب شده‌اند.
 
-### `npm test`
+1. **کلون کردن پروژه**
+    ```bash
+    git clone https://github.com/ArashH0sseini/kaloot-media-react.git
+    cd kaloot-media-react
+    ```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. **نصب وابستگی‌ها**
 
-### `npm run build`
+    برای فرانت‌اند:
+    ```bash
+    cd frontend
+    npm install
+    ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    برای بک‌اند:
+    ```bash
+    cd backend
+    npm install
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### راه‌اندازی پروژه
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+برای اجرای پروژه به صورت لوکال:
 
-### `npm run eject`
+1. **اجرای بک‌اند**
+    ```bash
+    cd backend
+    npm start
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. **اجرای فرانت‌اند**
+    ```bash
+    cd frontend
+    npm start
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### استقرار روی Vercel
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+برای استقرار پروژه روی Vercel، به سادگی می‌توانید از تنظیمات پیش‌فرض استفاده کنید و فرانت‌اند و بک‌اند را به‌طور جداگانه در تنظیمات Vercel تنظیم کنید.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## نحوه استفاده
 
-## Learn More
+- کاربران می‌توانند فرم مشاوره را پر کنند و درخواست خود را ارسال کنند.
+- فرم‌های ارسالی به بک‌اند ارسال می‌شوند و ایمیل تایید برای مدیر ارسال می‌شود.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## مشارکت در پروژه
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. **فورک کردن پروژه**: پروژه را فورک کنید.
+2. **ایجاد تغییرات**: تغییرات خود را انجام دهید و سپس تغییرات را در شاخه جدید ارسال کنید.
+3. **ارسال درخواست تغییرات (Pull Request)**: پس از ایجاد تغییرات، یک درخواست تغییرات ارسال کنید.
 
-### Code Splitting
+## مجوز
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+این پروژه تحت مجوز MIT قرار دارد. برای اطلاعات بیشتر به [LICENSE](LICENSE) مراجعه کنید.
