@@ -1,16 +1,15 @@
 import React from "react";
+import MagazineCard from "./MagazineCard";
 import effect from "../../assets/images/effect.png";
 import imaging from "../../assets/images/imaging.png";
 import motion from "../../assets/images/motion.png";
-import MagazineCard from "./MagazineCard";
 import cover from '../../assets/images/cover.jpg'
-
 
 const MagazineCards = () => {
   const images = [
     { id: 1, src: cover, alt: "content", title: "هوش مصنوعی سورا", link:"/campaigns" },
     { id: 2, src: effect, alt: "effect", title: "جلوه های ویژه", link:"/vfx" },
-    { id: 3, src: imaging, alt: "imaging", title: "تصویر برداری", link:"/Video" },
+    { id: 3, src: imaging, alt: "imaging", title: "تصویر برداری", link:"/imaging" },
     { id: 4, src: motion, alt: "motion", title: "موشن گرافیک", link:"/motion" },
   ];
 
