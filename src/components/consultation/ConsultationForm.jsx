@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { FaExclamationTriangle } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 const ConsultationForm = () => {
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -24,7 +27,7 @@ const ConsultationForm = () => {
       if (!validatePhone(value)) {
         setErrors({
           ...errors,
-          phone: "شماره موبایل باید با 09 شروع شود و 11 رقم باشد.",
+          phone: t("phoneError"), // استفاده از ترجمه
         });
       } else {
         const newErrors = { ...errors };
@@ -38,12 +41,12 @@ const ConsultationForm = () => {
     e.preventDefault();
 
     if (!formData.name || !formData.phone || !formData.message) {
-      toast.error("لطفاً تمامی فیلدها را پر کنید.");
+      toast.error(t("fillFieldsError")); // استفاده از ترجمه
       return;
     }
 
     if (!validatePhone(formData.phone)) {
-      toast.error("شماره موبایل وارد شده صحیح نیست.");
+      toast.error(t("invalidPhoneError")); // استفاده از ترجمه
       return;
     }
 
@@ -59,26 +62,24 @@ const ConsultationForm = () => {
       });
 
       if (response.ok) {
-        toast.success("پیام با موفقیت ارسال شد!");
+        toast.success(t("messageSentSuccess")); // استفاده از ترجمه
         setFormData({ name: "", phone: "", message: "" });
       } else {
-        toast.error("ارسال پیام با خطا مواجه شد.");
+        toast.error(t("messageSendError")); // استفاده از ترجمه
       }
     } catch (error) {
       console.error("خطا در ارسال پیام:", error);
-      toast.error("خطا در اتصال به سرور.");
+      toast.error(t("connectionError")); // استفاده از ترجمه
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="flex items-center justify-center ">
+    <div className="flex items-center justify-center">
       <Toaster position="bottom-center" reverseOrder={false} />
-      <div className="max-w-md w-full ">
-      <h3 className="text-center text-white/80 mb-4">
-            یا با پر کردن فرم در اولین فرصت باهات تماس میگیریم
-          </h3>
+      <div className="max-w-md w-full">
+        <h3 className="text-center text-white mb-4">{t("formConsultation")}</h3>
         <form onSubmit={handleSubmit} autoComplete="off">
           <div className="mb-4">
             <input
@@ -88,7 +89,7 @@ const ConsultationForm = () => {
               value={formData.name}
               onChange={handleChange}
               className="mt-1 p-2 px-4 block w-full rounded-md bg-black/30 text-white placeholder-white/60 shadow-sm focus:outline-none"
-              placeholder="نام:"
+              placeholder={t("name")}
               autoComplete="off"
             />
           </div>
@@ -102,7 +103,7 @@ const ConsultationForm = () => {
               className={`mt-1 p-2 px-4 block w-full rounded-md bg-black/30 text-white placeholder-white/60 shadow-sm focus:outline-none ${
                 errors.phone ? "border-red-500" : ""
               }`}
-              placeholder="شماره تماس:"
+              placeholder={t("phone")}
               autoComplete="off"
             />
             {errors.phone && (
@@ -120,7 +121,7 @@ const ConsultationForm = () => {
               onChange={handleChange}
               rows="4"
               className="mt-1 p-2 px-4 block w-full rounded-md bg-black/30 text-white placeholder-white/60 shadow-sm focus:outline-none"
-              placeholder="در چه زمینه‌ای نیاز به تبلیغات دارید؟"
+              placeholder={t("subject")}
               autoComplete="off"
             ></textarea>
           </div>
@@ -153,10 +154,10 @@ const ConsultationForm = () => {
                     d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
                   ></path>
                 </svg>
-                <span>در حال ارسال...</span>
+                <span>{t("sendingMessage")}</span> {/* استفاده از ترجمه */}
               </div>
             ) : (
-              "ارسال پیام"
+              t("send")
             )}
           </button>
         </form>

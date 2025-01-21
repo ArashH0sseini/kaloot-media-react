@@ -14,7 +14,7 @@ const Roll = ({ index, z, speed }) => {
   const ref = useRef();
   const { viewport, camera } = useThree();
   const { width, height } = viewport.getCurrentViewport(camera, [0, 0, -z]);
-  const { nodes, materials } = useGLTF("/roll.gltf");
+  const { nodes } = useGLTF("/roll.gltf");
   const [data] = useState({
     y: THREE.MathUtils.randFloatSpread(height * 2),
     x: THREE.MathUtils.randFloatSpread(2),

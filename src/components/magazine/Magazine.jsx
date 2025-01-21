@@ -3,7 +3,7 @@ import MagazineCards from "./MagazineCards";
 
 const Magazine = () => {
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section id="mag" className="flex flex-col items-center justify-center">
       <header className="relative w-full">
         {/* <MagazineTitle title="کلوت مگ" size="30px" circle={true} /> */}
       </header>

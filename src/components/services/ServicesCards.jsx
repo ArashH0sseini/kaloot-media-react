@@ -4,13 +4,16 @@ import content from "../../assets/images/content.png";
 import effect from "../../assets/images/effect.png";
 import imaging from "../../assets/images/imaging.png";
 import motion from "../../assets/images/motion.png";
+import { useTranslation } from "react-i18next";
 
 const ServicesCards = () => {
+        const { t } = useTranslation();
+  
   const images = [
-    { id: 1, src: content, alt: "content", title: "کمپین تبلیغاتی", link:"/campaigns" },
-    { id: 2, src: effect, alt: "effect", title: "جلوه های ویژه", link:"/vfx" },
-    { id: 3, src: imaging, alt: "imaging", title: "تصویر برداری", link:"/imaging" },
-    { id: 4, src: motion, alt: "motion", title: "موشن گرافیک", link:"/motion" },
+    { id: 1, src: content, alt: "content", title: t('campaign'), link:"/campaigns" },
+    { id: 2, src: effect, alt: "effect", title: t('vfx'), link:"/vfx" },
+    { id: 3, src: imaging, alt: "imaging", title: t('videography'), link:"/imaging" },
+    { id: 4, src: motion, alt: "motion", title: t('motion'), link:"/motion" },
   ];
 
   return (

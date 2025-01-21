@@ -11,12 +11,13 @@ const InstagramId = () => {
     <div className="flex items-center justify-center">
       <motion.span
         className="text-white text-[30px] font-bungee border-b-2 border-white"
+        dir="ltr"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         variants={textAnimation}
       >
-        kalootmedia@
+        @kalootmedia
       </motion.span>
     </div>
   );

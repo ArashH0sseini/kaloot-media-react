@@ -1,22 +1,29 @@
 import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import { Environment, useGLTF } from "@react-three/drei";
 import { AnimationMixer } from "three";
 import whiteboard from "../../assets/models/whiteboard.glb";
 
 useGLTF.preload(whiteboard);
 
-const ModelWithAnimation = ({ url, triggerAnimation, isPlaying, initialFrame }) => {
+const ModelWithAnimation = ({
+  url,
+  triggerAnimation,
+  isPlaying,
+  initialFrame,
+}) => {
   const { scene, animations } = useGLTF(url);
   const mixer = useRef(null);
   const actions = useRef([]);
   const modelRef = useRef();
-  const [currentAnimation, setCurrentAnimation] = useState(0);
+  const [currentAnimation] = useState(0);
 
   useEffect(() => {
     if (animations && animations.length > 0) {
       mixer.current = new AnimationMixer(scene);
-      actions.current = animations.map((clip) => mixer.current.clipAction(clip));
+      actions.current = animations.map((clip) =>
+        mixer.current.clipAction(clip)
+      );
 
       actions.current.forEach((action) => {
         action.stop();
@@ -96,7 +103,7 @@ const WhiteBoard = () => {
         transition duration-300 animated-background bg-gradient-to-r from-[#ffb71b] via-[#ffae00] to-[#ff7301] shadow-[0_0_20px_5px_rgb(255,174,0)]"
       >
         <button
-          className="w-full p-2 space-x-reverse border-4 rounded-xl bg-black/20 backdrop-blur-lg
+          className="w-full p-2 rtl:space-x-reverse border-4 rounded-xl bg-black/20 backdrop-blur-lg
           text-white flex items-center justify-center overflow-hidden border-t-transparent 
           border-r-transparent border-b-transparent border-l-transparent"
         >

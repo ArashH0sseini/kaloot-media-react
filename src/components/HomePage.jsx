@@ -1,4 +1,3 @@
-import Rolls3dBackground from "./Rolls3dBackground";
 import Header from "./header/Header";
 import Arrows from "./header/Arrows";
 import Kelaket from "./3dModels/Kelaket";
@@ -9,11 +8,11 @@ import AboutUs from "./AboutUs";
 import FollowInstagram from "./Instagram/FollowInstagram";
 import Magazine from "./magazine/Magazine";
 
-const Home = () => {
+const HomePage = () => {
   return (
     <>
-      <Rolls3dBackground />
-      <div className="w-full absolute top-0 bg-gradient-to-b from-[rgba(0,0,0,0.6)] via-[rgb(255,65,65)] to-[rgb(0,0,0)]">
+      {/* <Rolls3dBackground /> */}
+      <div className="w-full absolute top-0 bg-gradient-to-b from-[rgb(0,0,0)] via-[rgb(255,65,65)] to-[rgb(0,0,0)]">
         <Header />
         <main>
           <div className="flex flex-col lg:flex-row items-center justify-center">
@@ -38,4 +37,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

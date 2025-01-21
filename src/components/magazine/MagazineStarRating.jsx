@@ -5,7 +5,7 @@ const MagazineStarRating = ({ rating, maxStars = 5 }) => {
   const emptyStars = maxStars - fullStars;
 
   return (
-    <div className="flex items-center space-x-2 space-x-reverse">
+    <div className="flex items-center space-x-2 rtl:space-x-reverse">
       {Array.from({ length: fullStars }).map((_, index) => (
         <svg
           key={`full-${index}`}
@@ -18,7 +18,6 @@ const MagazineStarRating = ({ rating, maxStars = 5 }) => {
           <path d="M12 .587l3.668 7.568L24 9.423l-6 5.845 1.415 8.232L12 18.902l-7.415 4.598L6 15.268 0 9.423l8.332-1.268z" />
         </svg>
       ))}
-
 
       {Array.from({ length: emptyStars }).map((_, index) => (
         <svg

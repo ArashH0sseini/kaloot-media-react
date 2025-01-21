@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import VideoPlayer from "../VideoPlayer";
 import eyecover from "../../assets/images/eye.png";
 import phonecover from "../../assets/images/phone.png";
+import lioncover from "../../assets/images/lion.png";
+import cafecover from "../../assets/images/cafe.png";
+import borjcover from "../../assets/images/borj.png";
 
 const VFXPage = () => {
   return (
@@ -84,6 +87,83 @@ const VFXPage = () => {
               isHorizontal={true}
             />
           </div>
+
+          
+          <div className="w-full flex flex-col-reverse items-center justify-center lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg ">
+              <h2 className="text-3xl font-bold text-[#FF7B6E]">
+                تیتر توضیح ویدئو
+              </h2>
+              <p className="text-xl leading-10 text-justify">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                illum eius id quidem voluptas iusto magni, exercitationem odit
+                accusamus in saepe dolore enim facilis animi fuga neque hic illo
+                laboriosam! Lorem ipsum, dolor sit amet consectetur adipisicing
+                elit. Ipsam illum eius id quidem voluptas iusto magni,
+                exercitationem odit accusamus in saepe dolore enim facilis animi
+                fuga neque hic illo laboriosam! Lorem ipsum, dolor sit amet
+                consectetur adipisicing elit. Ipsam illum eius id quidem
+                voluptas iusto magni, exercitationem odit accusamus in saepe
+                dolore enim facilis animi fuga neque hic illo laboriosam!
+              </p>
+            </div>
+            <VideoPlayer
+              videoUrl="https://phoenixgameclub.ir/wp-content/uploads/lion.webm"
+              coverImage={lioncover}
+              isHorizontal={false}
+            />
+          </div>
+
+          <div className="w-full flex flex-col-reverse items-center justify-center lg:flex-row-reverse lg:items-center lg:justify-between">
+            <div class="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg ">
+              <h2 className="text-3xl font-bold text-[#FF7B6E]">
+                تیتر توضیح ویدئو
+              </h2>
+              <p className="text-xl leading-10 text-justify">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                illum eius id quidem voluptas iusto magni, exercitationem odit
+                accusamus in saepe dolore enim facilis animi fuga neque hic illo
+                laboriosam! Lorem ipsum, dolor sit amet consectetur adipisicing
+                elit. Ipsam illum eius id quidem voluptas iusto magni,
+                exercitationem odit accusamus in saepe dolore enim facilis animi
+                fuga neque hic illo laboriosam! Lorem ipsum, dolor sit amet
+                consectetur adipisicing elit. Ipsam illum eius id quidem
+                voluptas iusto magni, exercitationem odit accusamus in saepe
+                dolore enim facilis animi fuga neque hic illo laboriosam!
+              </p>
+            </div>
+            <VideoPlayer
+              videoUrl="https://phoenixgameclub.ir/wp-content/uploads/cafe.webm"
+              coverImage={cafecover}
+              isHorizontal={false}
+            />
+          </div>
+
+          <div className="w-full flex flex-col-reverse items-center justify-center lg:flex-row lg:items-center lg:justify-between">
+            <div class="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg ">
+              <h2 className="text-3xl font-bold text-[#FF7B6E]">
+                تیتر توضیح ویدئو
+              </h2>
+              <p className="text-xl leading-10 text-justify">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
+                illum eius id quidem voluptas iusto magni, exercitationem odit
+                accusamus in saepe dolore enim facilis animi fuga neque hic illo
+                laboriosam! Lorem ipsum, dolor sit amet consectetur adipisicing
+                elit. Ipsam illum eius id quidem voluptas iusto magni,
+                exercitationem odit accusamus in saepe dolore enim facilis animi
+                fuga neque hic illo laboriosam! Lorem ipsum, dolor sit amet
+                consectetur adipisicing elit. Ipsam illum eius id quidem
+                voluptas iusto magni, exercitationem odit accusamus in saepe
+                dolore enim facilis animi fuga neque hic illo laboriosam!
+              </p>
+            </div>
+            <VideoPlayer
+              videoUrl="https://phoenixgameclub.ir/wp-content/uploads/borj.webm"
+              coverImage={borjcover}
+              isHorizontal={false}
+            />
+          </div>
+
         </main>
       </div>
       <Footer />

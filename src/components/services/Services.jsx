@@ -1,12 +1,15 @@
 import React from "react";
 import ServicesCards from "./ServicesCards";
 import ServicesTitle from "./ServicesTitle";
+import { useTranslation } from "react-i18next";
 
 const Services = () => {
+    const { t } = useTranslation();
+  
   return (
-    <section className="flex flex-col items-center justify-center">
+    <section id="services" className="flex flex-col items-center justify-center">
       <header className="relative w-full">
-        <ServicesTitle title="خدمات ما" size="30px" circle={true} />
+        <ServicesTitle title={`${t('services')}`} size="30px" circle={true} />
       </header>
       <main className="w-full">
         <ServicesCards />

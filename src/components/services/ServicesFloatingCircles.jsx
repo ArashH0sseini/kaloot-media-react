@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 const ServicesFloatingCircles = () => {
   const [circlePositions, setCirclePositions] = useState({
@@ -9,7 +9,7 @@ const ServicesFloatingCircles = () => {
   const [scrollLimit, setScrollLimit] = useState(3200);
   const [scrollStart, setScrollStart] = useState(500);
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const scrollY = window.scrollY;
 
     if (scrollY < scrollStart) {
@@ -50,9 +50,9 @@ const ServicesFloatingCircles = () => {
         y: `${80 + verticalMovement + curveMovement}%`,
       },
     });
-  };
+  }, [scrollStart, scrollLimit, stopped]);
 
-  const handleResize = () => {
+  const handleResize = useCallback(() => {
     const screenWidth = window.innerWidth;
 
     if (screenWidth < 768) {
@@ -77,7 +77,7 @@ const ServicesFloatingCircles = () => {
         rightCircle: { x: "89%", y: "80%" },
       });
     }
-  };
+  }, []);
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -89,7 +89,7 @@ const ServicesFloatingCircles = () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
-  }, [stopped]);
+  }, [handleScroll, handleResize]);
 
   return (
     <>

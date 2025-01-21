@@ -2,7 +2,8 @@ import React, { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
 import { AnimationMixer } from "three";
-import kelaketModel from '../../assets/models/kelaket.gltf'
+import kelaketModel from "../../assets/models/kelaket.gltf";
+import tapSoundFile from "../../assets/sounds/tap-sound.ogg";
 
 useGLTF.preload(kelaketModel);
 
@@ -13,7 +14,6 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
   const modelRef = useRef();
   const [animationLength, setAnimationLength] = useState(0);
 
-
   useFrame(() => {
     if (modelRef.current) {
       modelRef.current.rotation.y += 0.01;
@@ -22,7 +22,6 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
       mixer.current.update(0.01);
     }
   });
-
 
   useEffect(() => {
     if (animations && animations.length > 0) {
@@ -36,14 +35,17 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
     }
   }, [animations, scene]);
 
-
   useEffect(() => {
     if (playAnimation && actions.current.length > 0) {
-      actions.current.forEach((action) => action.reset().play());
+      actions.current.forEach((action) => {
+        action.reset().play();
+        // Set the timeScale to increase speed
+        action.timeScale = 2; // Increasing speed (default is 1)
+      });
       const timer = setTimeout(() => {
         actions.current.forEach((action) => action.stop());
-        onAnimationEnd();
-      }, animationLength * 1000);
+        onAnimationEnd(); // Animation end callback
+      }, animationLength * 500); // Reduce the time for faster completion
       return () => clearTimeout(timer);
     }
   }, [playAnimation, animationLength, onAnimationEnd]);
@@ -60,14 +62,16 @@ const ModelWithAnimation = ({ url, playAnimation, onAnimationEnd }) => {
 
 const Kelaket = () => {
   const [playAnimation, setPlayAnimation] = useState(false);
+  const tapSound = useRef(new Audio(tapSoundFile));
 
   const handleAnimationEnd = () => {
     setPlayAnimation(false);
+    tapSound.current.play(); // Play the sound after animation ends
   };
 
   const handleClick = () => {
     if (!playAnimation) {
-      setPlayAnimation(true);
+      setPlayAnimation(true); // Start animation
     }
   };
 
@@ -77,7 +81,7 @@ const Kelaket = () => {
         className="rounded-3xl w-[70%] h-72 animated-background bg-gradient-to-r from-[#ffb71b] via-[#ffae00] to-[#ff8521] shadow-[0_0_20px_5px_rgb(255,174,0)] mt-2 mb-12"
         onClick={handleClick}
       >
-        <Canvas camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}>
+        <Canvas className="cursor-pointer" camera={{ position: [0, 2, 10], near: 0.1, far: 1000 }}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[5, 5, 5]} intensity={25} />
           <directionalLight position={[-5, 5, -5]} intensity={25} />

@@ -1,6 +1,12 @@
 import React, { useState, useRef } from "react";
 import ReactPlayer from "react-player";
-import { FaPlay, FaPause, FaVolumeMute, FaVolumeUp, FaRedo } from "react-icons/fa";
+import {
+  FaPlay,
+  FaPause,
+  FaVolumeMute,
+  FaVolumeUp,
+  FaRedo,
+} from "react-icons/fa";
 
 const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {
   const [playing, setPlaying] = useState(false);
@@ -55,6 +61,7 @@ const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {
   const handleSeekChange = (event) => {
     const newPlayed = parseFloat(event.target.value);
     setPlayed(newPlayed);
+    playerRef.current.seekTo(newPlayed, "fraction");
   };
 
   const handleSeekEnd = (event) => {
@@ -66,10 +73,12 @@ const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {
   const paddingTopValue = isHorizontal ? "56.25%" : "177.78%";
 
   return (
-<div
-  className="video-player-container relative w-full max-w-lg mx-auto rounded-lg overflow-hidden shadow-lg"
-  style={{ maxWidth: isHorizontal ? "500px" : "300px" }}
->      <div className="relative" style={{ paddingTop: paddingTopValue }}>
+    <div
+      className="video-player-container relative w-full max-w-lg mx-auto rounded-lg overflow-hidden shadow-lg"
+      style={{ maxWidth: isHorizontal ? "500px" : "300px" }}
+    >
+      {" "}
+      <div className="relative" style={{ paddingTop: paddingTopValue }}>
         <ReactPlayer
           ref={playerRef}
           url={videoUrl}
@@ -86,9 +95,8 @@ const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {
           height="100%"
         />
       </div>
-
       {showControls && (
-        <div className="absolute bottom-0 left-0 w-full p-4 bg-black bg-opacity-50 text-white flex items-center space-x-4 space-x-reverse">
+        <div className="absolute bottom-0 left-0 w-full p-4 bg-black bg-opacity-50 text-white flex items-center space-x-4 rtl:space-x-reverse">
           <div className="flex-grow flex items-center space-x-2">
             <span className="text-sm">{formatTime(played * duration)}</span>
             <div className="relative w-full h-2 bg-gray-700 rounded-full overflow-hidden">
@@ -106,17 +114,28 @@ const VideoPlayer = ({ videoUrl, coverImage, isHorizontal }) => {
                 onChange={handleSeekChange}
                 onMouseUp={handleSeekEnd}
                 className="absolute top-0 left-0 w-full h-2 opacity-0 cursor-pointer"
+                style={{ direction: "ltr" }}
               />
             </div>
             <span className="text-sm">{formatTime(duration)}</span>
           </div>
 
           <button onClick={toggleMute} className="text-white text-2xl">
-            {muted ? <FaVolumeMute className="text-base" /> : <FaVolumeUp className="text-base" />}
+            {muted ? (
+              <FaVolumeMute className="text-base" />
+            ) : (
+              <FaVolumeUp className="text-base" />
+            )}
           </button>
 
           <button onClick={togglePlay} className="text-white text-2xl">
-            {reload ? <FaRedo className="text-base" /> : playing ? <FaPause className="text-base" /> : <FaPlay className="text-base" />}
+            {reload ? (
+              <FaRedo className="text-base" />
+            ) : playing ? (
+              <FaPause className="text-base" />
+            ) : (
+              <FaPlay className="text-base" />
+            )}
           </button>
         </div>
       )}
