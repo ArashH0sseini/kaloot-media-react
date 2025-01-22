@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkkaloot_media=self.webpackChunkkaloot_media||[]).push([[60],{3060:(a,e,s)=>{s.r(e),s.d(e,{default:()=>l});var k=s(428),t=s(7929);const l=()=>(0,t.jsx)(k.sv,{})}}]);
+//# sourceMappingURL=60.f33fc1ec.chunk.js.map

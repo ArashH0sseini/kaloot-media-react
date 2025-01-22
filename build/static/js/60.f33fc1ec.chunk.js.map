@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/60.f33fc1ec.chunk.js","mappings":"+JAEA,MAIA,EAJaA,KACJC,EAAAA,EAAAA,KAACC,EAAAA,GAAM,G","sources":["components/Main.jsx"],"sourcesContent":["import { Outlet } from \"react-router-dom\";\r\n\r\nconst Main = () => {\r\n  return <Outlet />;\r\n};\r\n\r\nexport default Main;\r\n"],"names":["Main","_jsx","Outlet"],"sourceRoot":""}
