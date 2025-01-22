@@ -35,12 +35,6 @@ const Header = () => {
         <div className="text-white">
           <IoMenu className="text-5xl" />
         </div>
-        <div className="relative">
-          <div className="w-[120px] h-[120px] animate-pulse shadow-[0_0_25px_10px_rgb(255,255,255)] bg-white bg-opacity-80 rounded-full"></div>
-          <div className="absolute top-0">
-            <img src={kalootLogo} alt="logo" />
-          </div>
-        </div>
         <div className="flex items-center justify-center">
           <button
             onClick={() => switchLanguage("en")}
@@ -57,7 +51,14 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="w-full lg:w-3/4 h-40">
+      <div className="relative my-6 lg:hidden">
+        <div className="w-[160px] h-[160px] animate-pulse shadow-[0_0_25px_10px_rgb(255,255,255)] bg-white bg-opacity-80 rounded-full"></div>
+        <div className="absolute top-0">
+          <img src={kalootLogo} alt="logo" />
+        </div>
+      </div>
+
+      <div className="w-full h-40">
         <nav className="my-4">
           <ul className="flex items-start justify-start space-x-4 rtl:space-x-reverse text-white cursor-pointer">
             <div className="hidden lg:flex lg:items-center lg:justify-center lg:space-x-4 lg:rtl:space-x-reverse">
@@ -120,15 +121,15 @@ const Header = () => {
         </nav>
         <TypeIt
           key={langVersion}
-          className="text-white leading-[50px] md:leading-[55px] lg:leading-[60px] text-center sm:text-start md:text-justify"
+          className="text-white text-center lg:text-start lg:text-justify mb-10"
           options={{
             strings: [
-              `<span class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">${t(
+              `<p class="text-3xl sm:text-4xl lg:text-5xl font-extrabold">${t(
                 "kaloot"
-              )}</span>`,
-              `<span class="text-2xl lg:text-3xl font-medium">${t(
+              )}</p>`,
+              `<p class="leading-[60px] text-2xl lg:text-3xl font-medium">${t(
                 "slogan"
-              )}</span>`,
+              )}</p>`,
             ],
             speed: 40,
             loop: false,

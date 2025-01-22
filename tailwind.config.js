@@ -10,6 +10,9 @@ module.exports = {
         'staatliches': ['Staatliches', 'sans-serif'],
         'bungee': ['Bungee', 'sans-serif']
       },
+      screens: {
+        'xs': '444px'
+      },
     },
   },
   plugins: [
