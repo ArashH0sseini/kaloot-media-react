@@ -1,9 +1,9 @@
 import React from "react";
 import Footer from "../footer/Footer";
-import kalootLogo from "../../assets/images/kaloot-logo.png";
 import background from "../../assets/images/motion.png";
-import { Link } from "react-router-dom";
 import VideoPlayer from "../VideoPlayer";
+import Header from "../header/Header";
+import { useTranslation } from "react-i18next";
 import motioncover from "../../assets/images/motioncover.png";
 import flowercover from "../../assets/images/flowercover.png";
 import robotcover from "../../assets/images/robot.png";
@@ -11,6 +11,41 @@ import mermaidcover from "../../assets/images/mermaid.png";
 import cartridgescover from "../../assets/images/cartridges.png";
 
 const MotionGraphicsPage = () => {
+  const { t } = useTranslation();
+
+  const videoData = [
+    {
+      videoUrl: "https://phoenixgameclub.ir/wp-content/uploads/motion.webm",
+      coverImage: motioncover,
+      title: t("MotionGraphicsPage.videos.0.title"),
+      description: t("MotionGraphicsPage.videos.0.description"),
+    },
+    {
+      videoUrl: "https://phoenixgameclub.ir/wp-content/uploads/flower.webm",
+      coverImage: flowercover,
+      title: t("MotionGraphicsPage.videos.1.title"),
+      description: t("MotionGraphicsPage.videos.1.description"),
+    },
+    {
+      videoUrl: "https://phoenixgameclub.ir/wp-content/uploads/robot.webm",
+      coverImage: robotcover,
+      title: t("MotionGraphicsPage.videos.2.title"),
+      description: t("MotionGraphicsPage.videos.2.description"),
+    },
+    {
+      videoUrl: "https://phoenixgameclub.ir/wp-content/uploads/Mermaid.webm",
+      coverImage: mermaidcover,
+      title: t("MotionGraphicsPage.videos.3.title"),
+      description: t("MotionGraphicsPage.videos.3.description"),
+    },
+    {
+      videoUrl: "https://phoenixgameclub.ir/wp-content/uploads/cartridges.webm",
+      coverImage: cartridgescover,
+      title: t("MotionGraphicsPage.videos.4.title"),
+      description: t("MotionGraphicsPage.videos.4.description"),
+    },
+  ];
+
   return (
     <div className="w-full absolute top-0 bg-gradient-to-b from-[rgb(0,0,0)] to-[#C60A0A]">
       <div className="absolute z-0 opacity-10 w-full h-[1100px]">
@@ -23,154 +58,36 @@ const MotionGraphicsPage = () => {
       </div>
 
       <div className="m-auto p-5 text-white relative z-10">
-        <header>
-          <Link to="/">
-            <div className="w-[60px] h-[60px] animate-pulse shadow-[0_0_25px_2px_rgb(255,255,255)] bg-white bg-opacity-100 rounded-full">
-              <img src={kalootLogo} alt="logo" />
-            </div>
-          </Link>
-          <div className="flex flex-col w-[90%] m-auto my-6 space-y-4 items-center justify-center">
-            <h1 className="font-bold text-[40px]">جلوه های ویژه</h1>
-            <h2 className="text-xl leading-10 text-justify">
-              با جلوه‌های ویژه حرفه‌ای، داستانتان را به تصاویری خیره‌کننده و
-              فراموش‌نشدنی تبدیل کنید.
-            </h2>
-          </div>
-        </header>
+        <Header
+          title={t("MotionGraphicsPage.header.title")}
+          description={t("MotionGraphicsPage.header.description")}
+        />
         <main className="w-full my-20 flex flex-col items-center justify-center space-y-20">
-          <div className="w-full flex flex-col-reverse items-center justify-center lg:flex-row lg:items-center lg:justify-between">
-            <div class="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg ">
-              <h2 className="text-3xl font-bold text-[#FF7B6E]">
-                تیتر توضیح ویدئو
-              </h2>
-              <p className="text-xl leading-10 text-justify">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                illum eius id quidem voluptas iusto magni, exercitationem odit
-                accusamus in saepe dolore enim facilis animi fuga neque hic illo
-                laboriosam! Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Ipsam illum eius id quidem voluptas iusto magni,
-                exercitationem odit accusamus in saepe dolore enim facilis animi
-                fuga neque hic illo laboriosam! Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Ipsam illum eius id quidem
-                voluptas iusto magni, exercitationem odit accusamus in saepe
-                dolore enim facilis animi fuga neque hic illo laboriosam!
-              </p>
+          {videoData.map((video, index) => (
+            <div
+              key={index}
+              className={`w-full flex flex-col-reverse items-center justify-center ${
+                index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+              } lg:items-center lg:justify-between`}
+            >
+              <div className="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg">
+                <h2 className="text-3xl font-bold text-[#FF7B6E]">
+                  {video.title}
+                </h2>
+                <p
+                  className="text-xl leading-10 text-justify"
+                  style={{ whiteSpace: "pre-line" }}
+                >
+                  {video.description}
+                </p>
+              </div>
+              <VideoPlayer
+                videoUrl={video.videoUrl}
+                coverImage={video.coverImage}
+                isHorizontal={index === 0}
+              />
             </div>
-            <VideoPlayer
-              videoUrl="https://phoenixgameclub.ir/wp-content/uploads/motion.webm"
-              coverImage={motioncover}
-              isHorizontal={true}
-            />
-          </div>
-
-          <div className="w-full flex flex-col-reverse items-center justify-center lg:flex-row-reverse lg:items-center lg:justify-between">
-            <div class="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg ">
-              <h2 className="text-3xl font-bold text-[#FF7B6E]">
-                نیلوفر آبی سه‌بعدی در دریا
-              </h2>
-              <p className="text-xl leading-10 text-justify">
-                در قلب دریا، جایی که سکوت با صدای آرام امواج درآمیخته، نیلوفری
-                آبی، با لطافت و شکوه، شکوفا می‌شود. این نماد زندگی و تعادل،
-                زیبایی طبیعت را در اوج خلوصش به تصویر می‌کشد. سفر نیلوفر در
-                آب‌های بی‌کران، گویای پیوند جاودانه‌ای بین آرامش و قدرت است."
-                برشته شدن یک شکلات با آتش "لحظه‌ای جادویی که گرمای آتش، شکلاتی
-                ساده را به اثری هنری تبدیل می‌کند. شعله‌های رقصان، سطح شکلات را
-                با رنگ طلایی و عطر شیرین می‌آرایند، گویی که طعم زندگی را در هر
-                تکه آن حک کرده‌اند. این داستان از دگرگونی است، از گرما تا لطافت،
-                از سادگی تا طراوت بی‌نظیر." بیرون آمدن یک اسکلت سه‌بعدی از میان
-                گلوله‌ها "در میان طوفان گلوله‌ها و شلیک‌هایی که تاریکی را
-                می‌شکافند، حقیقتی ناب از دل خاکستر بیرون می‌آید. اسکلت سه‌بعدی
-                که به آرامی از میان هرج‌ومرج سر برمی‌آورد، نماد استقامت و بازگشت
-                است. این صحنه نشان‌دهنده تناقضی زیبا بین نابودی و خلق دوباره
-                است؛ سفر به سوی نور در میان سایه‌ها." ربات کروی با دوربین "رباتی
-                متفاوت، با طراحی کروی که هر لحظه آماده کشف و ثبت است. بدنی صیقلی
-                و آینده‌نگرانه که از آن دوربین‌هایی پیشرفته و هوشمند بیرون
-                می‌آیند. این ربات، تجسم فناوری و خلاقیت است که می‌تواند هر
-                زاویه‌ای از جهان را با دقتی بی‌نظیر به تصویر بکشد. گویی که خود
-                جهان، از دریچه نگاه این ربات، بازتعریف می‌شود.
-              </p>
-            </div>
-            <VideoPlayer
-              videoUrl="https://phoenixgameclub.ir/wp-content/uploads/flower.webm"
-              coverImage={flowercover}
-              isHorizontal={false}
-            />
-          </div>
-
-          <div className="w-full flex flex-col-reverse items-center justify-center lg:flex-row lg:items-center lg:justify-between">
-            <div class="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg ">
-              <h2 className="text-3xl font-bold text-[#FF7B6E]">
-                تیتر توضیح ویدئو
-              </h2>
-              <p className="text-xl leading-10 text-justify">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                illum eius id quidem voluptas iusto magni, exercitationem odit
-                accusamus in saepe dolore enim facilis animi fuga neque hic illo
-                laboriosam! Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Ipsam illum eius id quidem voluptas iusto magni,
-                exercitationem odit accusamus in saepe dolore enim facilis animi
-                fuga neque hic illo laboriosam! Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Ipsam illum eius id quidem
-                voluptas iusto magni, exercitationem odit accusamus in saepe
-                dolore enim facilis animi fuga neque hic illo laboriosam!
-              </p>
-            </div>
-            <VideoPlayer
-              videoUrl="https://phoenixgameclub.ir/wp-content/uploads/robot.webm"
-              coverImage={robotcover}
-              isHorizontal={false}
-            />
-          </div>
-
-          <div className="w-full flex flex-col-reverse items-center justify-center lg:flex-row-reverse lg:items-center lg:justify-between">
-            <div class="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg ">
-              <h2 className="text-3xl font-bold text-[#FF7B6E]">
-                تیتر توضیح ویدئو
-              </h2>
-              <p className="text-xl leading-10 text-justify">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                illum eius id quidem voluptas iusto magni, exercitationem odit
-                accusamus in saepe dolore enim facilis animi fuga neque hic illo
-                laboriosam! Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Ipsam illum eius id quidem voluptas iusto magni,
-                exercitationem odit accusamus in saepe dolore enim facilis animi
-                fuga neque hic illo laboriosam! Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Ipsam illum eius id quidem
-                voluptas iusto magni, exercitationem odit accusamus in saepe
-                dolore enim facilis animi fuga neque hic illo laboriosam!
-              </p>
-            </div>
-            <VideoPlayer
-              videoUrl="https://phoenixgameclub.ir/wp-content/uploads/Mermaid.webm"
-              coverImage={mermaidcover}
-              isHorizontal={false}
-            />
-          </div>
-
-          <div className="w-full flex flex-col-reverse items-center justify-center lg:flex-row lg:items-center lg:justify-between">
-            <div class="flex flex-col justify-center items-center space-y-6 w-[85%] lg:w-1/2 m-20 p-6 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl shadow-lg ">
-              <h2 className="text-3xl font-bold text-[#FF7B6E]">
-                تیتر توضیح ویدئو
-              </h2>
-              <p className="text-xl leading-10 text-justify">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam
-                illum eius id quidem voluptas iusto magni, exercitationem odit
-                accusamus in saepe dolore enim facilis animi fuga neque hic illo
-                laboriosam! Lorem ipsum, dolor sit amet consectetur adipisicing
-                elit. Ipsam illum eius id quidem voluptas iusto magni,
-                exercitationem odit accusamus in saepe dolore enim facilis animi
-                fuga neque hic illo laboriosam! Lorem ipsum, dolor sit amet
-                consectetur adipisicing elit. Ipsam illum eius id quidem
-                voluptas iusto magni, exercitationem odit accusamus in saepe
-                dolore enim facilis animi fuga neque hic illo laboriosam!
-              </p>
-            </div>
-            <VideoPlayer
-              videoUrl="https://phoenixgameclub.ir/wp-content/uploads/cartridges.webm"
-              coverImage={cartridgescover}
-              isHorizontal={false}
-            />
-          </div>
+          ))}
         </main>
       </div>
       <Footer />

@@ -3,6 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, useGLTF } from "@react-three/drei";
 import { AnimationMixer } from "three";
 import whiteboard from "../../assets/models/whiteboard.glb";
+import { useTranslation } from "react-i18next";
 
 useGLTF.preload(whiteboard);
 
@@ -67,6 +68,7 @@ const ModelWithAnimation = ({
 };
 
 const WhiteBoard = () => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handleButtonClick = () => {
@@ -74,7 +76,7 @@ const WhiteBoard = () => {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center space-y-8">
+    <div className="w-full flex flex-col items-center justify-center space-y-8 mb-24">
       <div className="w-full h-[440px]">
         <Canvas camera={{ position: [0, 3, 15], near: 0.1, far: 1000 }}>
           <ambientLight intensity={0.7} />
@@ -99,7 +101,7 @@ const WhiteBoard = () => {
 
       <div
         onClick={handleButtonClick}
-        className="w-4/5 flex items-center justify-center p-1 rounded-xl hover:scale-110 transform 
+        className="w-1/3 flex items-center justify-center p-1 rounded-xl hover:scale-110 transform 
         transition duration-300 animated-background bg-gradient-to-r from-[#ffb71b] via-[#ffae00] to-[#ff7301] shadow-[0_0_20px_5px_rgb(255,174,0)]"
       >
         <button
@@ -107,8 +109,8 @@ const WhiteBoard = () => {
           text-white flex items-center justify-center overflow-hidden border-t-transparent 
           border-r-transparent border-b-transparent border-l-transparent"
         >
-          <span className="font-semibold text-xl font-staatliches">
-            {isPlaying ? "Stop Animation" : "Start Animation"}
+          <span className="font-semibold text-xl">
+            {isPlaying ? t('stop') : t("start")}
           </span>
         </button>
       </div>
