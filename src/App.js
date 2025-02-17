@@ -5,15 +5,6 @@ import i18n from "./helpers/i18n";
 const Main = lazy(() => import("./components/Main"));
 
 const App = () => {
-  const [minLoadingTime, setMinLoadingTime] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setMinLoadingTime(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
 
   const changeDirection = (lang) => {
     document.documentElement.lang = lang;
@@ -33,10 +24,6 @@ const App = () => {
       i18n.off("languageChanged", handleLanguageChange);
     };
   }, []);
-
-  if (minLoadingTime) {
-    return <Loading />;
-  }
 
   return (
     <Suspense fallback={<Loading />}>

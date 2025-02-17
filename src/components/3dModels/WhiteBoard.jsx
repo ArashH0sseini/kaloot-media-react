@@ -9,7 +9,6 @@ useGLTF.preload(whiteboard);
 
 const ModelWithAnimation = ({
   url,
-  triggerAnimation,
   isPlaying,
   initialFrame,
 }) => {
