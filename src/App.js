@@ -1,5 +1,4 @@
-import { Suspense, useState, lazy, useEffect } from "react";
-import Loading from "./components/Loading";
+import {  lazy, useEffect } from "react";
 import i18n from "./helpers/i18n";
 
 const Main = lazy(() => import("./components/Main"));
@@ -26,9 +25,7 @@ const App = () => {
   }, []);
 
   return (
-    <Suspense fallback={<Loading />}>
       <Main />
-    </Suspense>
   );
 };
 
